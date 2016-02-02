@@ -1,0 +1,145 @@
+.besogo-container {
+    outline: none;
+    display: flex;
+    background: #d0fefe;
+}
+
+.besogo-container * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.besogo-container button {
+    height: 35px;
+    width: 35px;
+    padding: 0px;
+    background: #d8dcd6;
+}
+
+.besogo-container input {
+    font-size: 12pt;
+}
+
+.besogo-container input[type='button'] {
+    background: #d8dcd6;
+}
+
+.besogo-container input[type='text'] {
+    width: 35px;
+}
+
+.besogo-board {
+    width: 100%;
+    height: 100%;
+}
+
+.besogo-panels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 5px;
+}
+
+.besogo-panels > * {
+    padding: 5px 0px;
+}
+
+.besogo-control {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+
+    flex: 0 0 auto;
+}
+
+.besogo-comment {
+    font-family: Georgia, serif;
+    font-size: 14pt;
+
+    overflow: auto;
+    flex: 1 1 60%;
+    width: 100%;
+}
+
+.besogo-comment input[type='button'] {
+    float: right;
+}
+
+.besogo-comment textarea {
+    height: 100%;
+    width: 100%;
+}
+
+.besogo-playerInfo {
+    display: flex;
+    white-space: pre-wrap;
+}
+
+.besogo-blackInfo {
+    flex: 1 1 auto;
+    color: white;
+    background: black;
+    text-align: right;
+}
+
+.besogo-whiteInfo {
+    flex: 1 1 auto;
+    color: black;
+    background: white;
+    text-align: left;
+}
+
+.besogo-gameInfo {
+    padding: 5px auto;
+    border-collapse: collapse;
+}
+
+.besogo-gameInfo td, tr {
+    border: 1px solid black;
+}
+
+.besogo-commentText {
+    padding: 3px;
+    white-space: pre-wrap;
+}
+
+.besogo-tool {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+
+    flex: 0 0 auto;
+}
+
+.besogo-tree {
+    overflow: auto;
+    flex: 1 1 40%;
+    width: 100%;
+}
+
+.besogo-file {
+    flex: 0 0 auto;
+}
+
+
+/* Board theme */
+
+.besogo-svg-board {
+    fill: #e0bb6c; /* Board color*/
+}
+
+.besogo-svg-lines {
+    stroke: black;
+    stroke-width: 4;
+    fill: none;
+}
+
+.besogo-svg-hoshi {
+    stroke: black;
+    stroke-width: 16;
+}
