@@ -80,7 +80,7 @@ besogo.create = function(container, options) {
             var width = container.parentElement.clientWidth,
                 height = window.innerHeight;
 
-            if (width < 600 || width - height < 400) { // Portrait mode
+            if (width < 600 || width < height) { // Portrait mode
                 container.style['flex-direction'] = 'column';
 
                 boardDiv.style.height = width + 'px';
@@ -93,13 +93,15 @@ besogo.create = function(container, options) {
             } else { // Landscape mode
                 container.style['flex-direction'] = 'row';
 
-                boardDiv.style.height = height + 'px';
-                boardDiv.style.width = height + 'px';
-
                 if (panelsDiv) {
+                    // Reduce height if needed to ensure panels are at least 400px wide
+                    height = (width - 400 < height) ? (width - 400) : height;
+
                     panelsDiv.style.height = height + 'px';
                     panelsDiv.style.width = (width - height) + 'px';
                 }
+                boardDiv.style.height = height + 'px';
+                boardDiv.style.width = height + 'px';
             }
         };
         window.addEventListener("resize", resizer);
