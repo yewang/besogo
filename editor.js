@@ -274,13 +274,13 @@ besogo.makeEditor = function(sizeX, sizeY) {
     }
 
     // Handle click with application of selected tool
-    function click(i, j, ctrlKey) {
+    function click(i, j, ctrlKey, shiftKey) {
         switch(tool) {
             case 'navOnly':
-                navigate(i, j);
+                navigate(i, j, shiftKey);
                 break;
             case 'auto':
-                if (!navigate(i, j)) { // Try to navigate to (i, j)
+                if (!navigate(i, j, shiftKey) && !shiftKey) { // Try to navigate to (i, j)
                     playMove(i, j, 0, ctrlKey); // Play auto-color move if navigate fails
                 }
                 break;
@@ -323,9 +323,9 @@ besogo.makeEditor = function(sizeX, sizeY) {
         }
     }
 
-    // Navigates to child with move at (x, y)
+    // Navigates to child with move at (x, y), searching tree if shiftKey pressed
     // Returns true is successful, false if not
-    function navigate(x, y) {
+    function navigate(x, y, shiftKey) {
         var i, move,
             children = current.children;
 

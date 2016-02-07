@@ -223,7 +223,8 @@ besogo.makeBoardDisplay = function(container, editor) {
 
     function handleClick(i, j) { // Returns function for click handling
         return function(event) {
-            editor.click(i, j, event.ctrlKey); // Call click handler in editor
+            // Call click handler in editor
+            editor.click(i, j, event.ctrlKey, event.shiftKey);
             (handleOver(i, j))(); // Ensures that any updated tool is visible
         };
     }
