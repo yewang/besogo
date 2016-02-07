@@ -3,7 +3,8 @@ besogo.makeTreePanel = function(container, editor) {
     var svg,
         pathGroup,
         bottomLayer,
-        currentMarker;
+        currentMarker,
+        SCALE = 0.25; // Tree size scaling factor
 
     rebuildNavTree();
     editor.addListener(treeUpdate);
@@ -32,18 +33,19 @@ besogo.makeTreePanel = function(container, editor) {
             height = container.clientHeight,
             top = container.scrollTop,
             left = container.scrollLeft,
-            markX = (marker.getAttribute('x') - 5) * 0.3, // Computed position of marker
-            markY = (marker.getAttribute('y') - 5) * 0.3;
+            markX = (marker.getAttribute('x') - 5) * SCALE, // Computed position of marker
+            markY = (marker.getAttribute('y') - 5) * SCALE,
+            GRIDSIZE = 120 * SCALE; // Size of the square grid
 
         if (markX < left) { // Ensure horizontal visibility of current marker
             container.scrollLeft = markX;
-        } else if (markX + 36 > left + width) {
-            container.scrollLeft = markX + 36 - width;
+        } else if (markX + GRIDSIZE > left + width) {
+            container.scrollLeft = markX + GRIDSIZE - width;
         }
         if (markY < top) { // Ensure vertical visibility of current marker
             container.scrollTop = markY;
-        } else if (markY + 36 > top + height) {
-            container.scrollTop = markY + 36 - height;
+        } else if (markY + GRIDSIZE > top + height) {
+            container.scrollTop = markY + GRIDSIZE - height;
         }
 
         marker.setAttribute('opacity', 1); // Always visible
@@ -94,8 +96,8 @@ besogo.makeTreePanel = function(container, editor) {
         width = 120 * nextOpen.length; // Compute height and width of nav tree
         height = 120 * Math.max.apply(Math, nextOpen);
         svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-        svg.setAttribute('height', height * 0.3); // Scale down the actual SVG size
-        svg.setAttribute('width', width * 0.3);
+        svg.setAttribute('height', height * SCALE); // Scale down the actual SVG size
+        svg.setAttribute('width', width * SCALE);
 
         if (oldSvg) { // Replace SVG in container
             container.replaceChild(svg, oldSvg);
