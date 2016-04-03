@@ -9,8 +9,8 @@
 }
 
 .besogo-container button {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     padding: 0px;
     background: #d8dcd6;
 }
@@ -24,7 +24,7 @@
 }
 
 .besogo-container input[type='text'] {
-    width: 35px;
+    width: 30px;
 }
 
 .besogo-board {
@@ -55,7 +55,7 @@
 
 .besogo-comment {
     font-family: Georgia, serif;
-    font-size: 14pt;
+    font-size: 12pt;
 
     overflow: auto;
     flex: 1 1 60%;
