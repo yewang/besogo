@@ -54,14 +54,14 @@ Web Dev Guide
 1. Link the style sheet `besogo.css`, which provides essential rendering parameters. This file can be modified to customize the layout and style.
 2. Include the combined and minified javascript file `besogo-all-min.js`.
 3. Add divs with the class `besogo-editor`, `besogo-viewer`, or `besogo-diagram`, e.g.,
-   ```
-   <div class="besogo-editor"></div>
-   <div class="besogo-viewer" sgf="gameRecord.sgf"></div>
-   <div class="besogo-diagram" panels="comment">
-   (;FF[4]GM[1]SZ[9]AB[bb:dd]AW[ee][ff][gg]
-   C[This diagram shows a 9x9 board with 9 black stones and 3 white stones placed on it.
-   Be sure to properly escape HTML special characters such as &gt;, &lt;, etc.])</div>
-   ```
+```
+<div class="besogo-editor"></div>
+<div class="besogo-viewer" sgf="gameRecord.sgf"></div>
+<div class="besogo-diagram" panels="comment">
+(;FF[4]GM[1]SZ[9]AB[bb:dd]AW[ee][ff][gg]
+C[This diagram shows a 9x9 board with 9 black stones and 3 white stones placed on it.
+Be sure to properly escape HTML special characters such as &gt;, &lt;, etc.])</div>
+```
 4. Call the auto-initialization function `besogo.autoInit()` to create widgets for the above divs.
 
 The contents of the div should either be empty or contain SGF text.
