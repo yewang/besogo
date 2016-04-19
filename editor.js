@@ -24,6 +24,8 @@ besogo.makeEditor = function(sizeX, sizeY) {
         tool = 'auto', // Currently active tool (default: auto-mode)
         label = "1", // Next label that will be applied
 
+        navHistory = [], // Navigation history
+
         gameInfo = {}, // Game info properties
 
         // Order of coordinate systems
@@ -200,11 +202,15 @@ besogo.makeEditor = function(sizeX, sizeY) {
             return false; // Do nothing if no children (avoid notification)
         }
         while (current.children.length > 0 && num !== 0) {
-            current = current.children[0];
+            if (navHistory.length) { // Non-empty navigation history
+                current = navHistory.pop();
+            } else { // Empty navigation history
+                current = current.children[0]; // Go to first child
+            }
             num--;
         }
         // Notify listeners of navigation (with no tree edits)
-        notifyListeners({ navChange: true });
+        notifyListeners({ navChange: true }, true); // Preserve history
     }
 
     // Navigates backward num nodes (to the root if num === -1)
@@ -213,11 +219,12 @@ besogo.makeEditor = function(sizeX, sizeY) {
             return false; // Do nothing if already at root (avoid notification)
         }
         while (current.parent && num !== 0) {
+            navHistory.push(current); // Save current into navigation history
             current = current.parent;
             num--;
         }
         // Notify listeners of navigation (with no tree edits)
-        notifyListeners({ navChange: true });
+        notifyListeners({ navChange: true }, true); // Preserve history
     }
 
     // Cyclically switches through siblings
@@ -441,8 +448,11 @@ besogo.makeEditor = function(sizeX, sizeY) {
     //    navChange: current switched to different node
     //    stoneChange: stones modified in current node
     //    markupChange: markup modified in current node
-    function notifyListeners(msg) {
+    function notifyListeners(msg, keepHistory) {
         var i;
+        if (!keepHistory && msg.navChange) {
+            navHistory = []; // Clear navigation history
+        }
         for (i = 0; i < listeners.length; i++) {
             listeners[i](msg);
         }
