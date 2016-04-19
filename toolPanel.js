@@ -18,20 +18,20 @@ besogo.makeToolPanel = function(container, editor) {
 
     svg = makeButtonSVG('addB', 'Set black'); // Add black button
     element = besogo.svgEl('g');
-    element.appendChild(besogo.svgStone(0, 0, -1));
-    element.appendChild(besogo.svgPlus(0, 0, besogo.RED));
+    element.appendChild(besogo.svgStone(0, 0, -1)); // Black stone
+    element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
     svg.appendChild(element);
 
     svg = makeButtonSVG('addW', 'Set white'); // Add white button
     element = besogo.svgEl('g');
-    element.appendChild(besogo.svgStone(0, 0, 1));
-    element.appendChild(besogo.svgPlus(0, 0, besogo.RED));
+    element.appendChild(besogo.svgStone(0, 0, 1)); // White stone
+    element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
     svg.appendChild(element);
 
     svg = makeButtonSVG('addE', 'Set empty'); // Add empty button
     element = besogo.svgEl('g');
-    element.appendChild(besogo.svgStone(0, 0, besogo.GREY));
-    element.appendChild(besogo.svgCross(0, 0, besogo.RED));
+    element.appendChild(besogo.svgStone(0, 0)); // Grey stone
+    element.appendChild(besogo.svgCross(0, 0, besogo.RED)); // Red cross
     svg.appendChild(element);
 
     svg = makeButtonSVG('circle', 'Circle'); // Circle markup button

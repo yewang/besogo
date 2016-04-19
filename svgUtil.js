@@ -25,35 +25,18 @@ besogo.svgEl = function(name, attributes) {
 
 // Makes a stone element
 besogo.svgStone = function(x, y, color) {
-    var radius, // Radius of the stone
-        outline, // Outline width
-        fill, // Main color of the stone
-        stroke; // Color of the outline
+    var className = "besogo-svg-greyStone"; // Grey stone by default
 
     if (color === -1) { // Black stone
-        radius = 44;
-        outline = 0;
-        fill = "black";
-        stroke = "white";
+        className = "besogo-svg-blackStone";
     } else if (color === 1) { // White stone
-        radius = 44;
-        outline = 0;
-        fill = "white";
-        stroke = "black";
-    } else { // Use color parameter as string
-        radius = 44;
-        outline = 0;
-        fill = color;
-        stroke = color;
+        className = "besogo-svg-whiteStone"
     }
 
     return besogo.svgEl("circle", {
         cx: x,
         cy: y,
-        r: radius,
-        fill: fill,
-        stroke: stroke,
-        "stroke-width": outline
+        'class': className
     });
 };
 

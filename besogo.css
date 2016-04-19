@@ -143,3 +143,24 @@
     stroke: black;
     stroke-width: 16;
 }
+
+.besogo-svg-blackStone {
+    fill: black;
+    stroke: white;
+    r: 44;
+    stroke-width: 0;
+}
+
+.besogo-svg-whiteStone {
+    fill: white;
+    stroke: black;
+    r: 44;
+    stroke-width: 0;
+}
+
+.besogo-svg-greyStone {
+    fill: #929591;
+    stroke: black;
+    r: 44;
+    stroke-width: 0;
+}
