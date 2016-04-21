@@ -14,13 +14,26 @@ besogo.makeBoardDisplay = function(container, editor) {
         markupGroup, // Group for markup
         hoverGroup, // Group for hover layer
         markupLayer, // Array of markup layer elements
-        hoverLayer; // Array of hover layer elements
+        hoverLayer, // Array of hover layer elements
+
+        TOUCH_FLAG = false; // Flag for touch interfaces
 
     initializeBoard(editor.getCoordStyle()); // Initialize SVG element and draw the board
     container.appendChild(svg); // Add the SVG element to the document
     editor.addListener(update); // Register listener to handle editor/game state updates
     redrawAll(editor.getCurrent()); // Draw stones, markup and hover layer
 
+    // Set listener to detect touch interfaces
+    container.addEventListener('touchstart', setTouchFlag);
+
+    // Function for setting the flag for touch interfaces
+    function setTouchFlag () {
+        TOUCH_FLAG = true; // Set flag to prevent needless function calls
+        hoverLayer = []; // Drop hover layer references, kills events
+        svg.removeChild(hoverGroup); // Remove hover group from SVG
+        // Remove self when done
+        container.removeEventListener('touchstart', setTouchFlag);
+    }
 
     // Initializes the SVG and draws the board
     function initializeBoard(coord) {
@@ -225,7 +238,9 @@ besogo.makeBoardDisplay = function(container, editor) {
         return function(event) {
             // Call click handler in editor
             editor.click(i, j, event.ctrlKey, event.shiftKey);
-            (handleOver(i, j))(); // Ensures that any updated tool is visible
+            if(!TOUCH_FLAG) {
+                (handleOver(i, j))(); // Ensures that any updated tool is visible
+            }
         };
     }
     function handleOver(i, j) { // Returns function for mouse over
@@ -400,6 +415,10 @@ besogo.makeBoardDisplay = function(container, editor) {
 
     // Redraws the hover layer
     function redrawHover(current) {
+        if (TOUCH_FLAG) {
+            return; // Do nothing for touch interfaces
+        }
+
         var element, i, j, x, y, // Scratch iteration variables
             group = besogo.svgEl("g"), // Group holding hover layer elements
             tool = editor.getTool(),
