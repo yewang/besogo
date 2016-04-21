@@ -51,7 +51,7 @@ Web Dev Guide
 -------------
 
 #### To embed BesoGo editor/viewer in your website
-1. Link the style sheet `besogo.css`, which provides essential rendering parameters. This file can be modified to customize the layout and style.
+1. Link the style sheet `besogo.css` and one of the `board-*.css` sheets, which select different board themes (`std`, `alt`, `book`, `dark`). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
 2. Include the combined and minified javascript file `besogo-all-min.js`.
 3. Add divs with the class `besogo-editor`, `besogo-viewer`, or `besogo-diagram`, e.g.,
    ```
