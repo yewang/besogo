@@ -17,21 +17,18 @@
 
 .besogo-svg-blackStone {
     fill: black;
-    stroke: white;
-    r: 44;
-    stroke-width: 0;
+    stroke: black;
+    stroke-width: 4;
 }
 
 .besogo-svg-whiteStone {
     fill: white;
     stroke: black;
-    r: 42;
     stroke-width: 4;
 }
 
 .besogo-svg-greyStone {
     fill: #929591;
-    stroke: black;
-    r: 44;
-    stroke-width: 0;
+    stroke: #929591;
+    stroke-width: 4;
 }

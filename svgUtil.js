@@ -36,6 +36,7 @@ besogo.svgStone = function(x, y, color) {
     return besogo.svgEl("circle", {
         cx: x,
         cy: y,
+        r: 42,
         'class': className
     });
 };
