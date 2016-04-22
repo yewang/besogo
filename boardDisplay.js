@@ -41,11 +41,14 @@ besogo.makeBoardDisplay = function(container, editor) {
 
         stoneGroup = besogo.svgEl("g");
         markupGroup = besogo.svgEl("g");
-        hoverGroup = besogo.svgEl("g");
 
-        svg.appendChild(stoneGroup); // Add placeholder groups for stone layer,
-        svg.appendChild(markupGroup); // ... markup layer,
-        svg.appendChild(hoverGroup); // ... and hover layer
+        svg.appendChild(stoneGroup); // Add placeholder group for stone layer
+        svg.appendChild(markupGroup); // Add placeholder group for markup layer
+
+        if (!TOUCH_FLAG) {
+            hoverGroup = besogo.svgEl("g");
+            svg.appendChild(hoverGroup);
+        }
 
         addEventTargets(); // Add mouse event listener layer
     }
@@ -226,8 +229,11 @@ besogo.makeBoardDisplay = function(container, editor) {
 
                 // Add event listeners, using closures to decouple (i, j)
                 element.addEventListener("click", handleClick(i, j));
-                element.addEventListener("mouseover", handleOver(i, j));
-                element.addEventListener("mouseout", handleOut(i, j));
+
+                if (!TOUCH_FLAG) { // Skip hover listeners for touch interfaces
+                    element.addEventListener("mouseover", handleOver(i, j));
+                    element.addEventListener("mouseout", handleOut(i, j));
+                }
 
                 svg.appendChild(element);
             }
