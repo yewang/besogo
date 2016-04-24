@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" type="text/css" href="besogo.css">
-<link rel="stylesheet" type="text/css" href="board-std.css">
+<link rel="stylesheet" type="text/css" href="board-std.css" id="boardStyle">
 
 <script src="besogo.js"></script>
 <script src="editor.js"></script>
@@ -21,8 +21,29 @@
 <script src="commentPanel.js"></script>
 <script src="treePanel.js"></script>
 
-<body style="padding : 0px; margin : 0px;" onload="besogo.autoInit()">
-<div class="besogo-editor"></div>
+<body style="padding : 0px; margin : 0px;">
+<div id="target"></div>
+
+<script type="text/javascript">
+(function() {
+    var options = {},
+        searchString = location.search.substring(1),
+        params = searchString.split("&"),
+        i, value; // Scratch iteration variables
+
+    for (i = 0; i < params.length; i++) {
+        value = params[i].split("=");
+        options[value[0]] = value[1];
+    }
+    if (options.theme === 'std' || options.theme === 'alt' || 
+    	options.theme === 'dark' || options.theme === 'book') {
+    	document.getElementById('boardStyle').href = 'board-' + options.theme + '.css';
+    }
+
+    besogo.create(document.getElementById('target'), options);
+})();
+</script>
+
 </body>
 
 </html>

@@ -32,3 +32,19 @@
     stroke: #536267;
     stroke-width: 4;
 }
+
+/* Overuling standard GUI theme */
+.besogo-container {
+    color: #929591;
+    background: #1b2431;
+}
+
+.besogo-blackInfo {
+    color: #929591;
+    background: black;
+}
+
+.besogo-whiteInfo {
+    color: black;
+    background: #929591;
+}
