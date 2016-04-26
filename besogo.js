@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 var besogo = window.besogo = window.besogo || {}; // Establish our namespace
-besogo.VERSION = '0.0.0-alpha';
+besogo.VERSION = '0.0.1-alpha';
 
 besogo.create = function(container, options) {
     var editor, // Core editor object

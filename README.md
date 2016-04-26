@@ -13,7 +13,12 @@ User Notes
 
 BesoGo can be used as a web-based SGF editor, an embeddable SGF viewer, or a board diagram renderer
 
-An example installation can be used at <http://yewang.github.io/besogo/>
+An example SGF editor (based on the latest release) can be used at <http://yewang.github.io/besogo/>
+
+Use <http://yewang.github.io/besogo/testing.html> for an SGF editor based on the latest code snapshot, with experimental themes available at:
+- <http://yewang.github.io/besogo/testing.html?theme=dark>
+- <http://yewang.github.io/besogo/testing.html?theme=book>
+- <http://yewang.github.io/besogo/testing.html?theme=alt>
 
 When entering moves, overwrite, suicide, and basic ko moves are not allowed, but can be enabled by holding down `ctrl` while clicking
 
@@ -114,7 +119,11 @@ Everything should be encapsulated within the name space object `besogo`
 
 #### Outline of source files
 - `besogo.js` establishes name space, core functions `autoInit` and `create` compose the editor and GUI objects
-- `besoso.css` defines GUI layout and some rendering options
+- `besoso.css` defines GUI layout and main rendering options
+- `besogo-std.css` standard board theme
+- `besogo-alt.css` alternate board theme
+- `besogo-book.css` book (black and white) board theme 
+- `besogo-dark.css` dark (night mode) board theme
 - `editor.js` core editor logic managing game tree, handling input from GUI panels, and notifying GUI panels of state changes
 - `gameRoot.js` data structure that internally represents the game tree
 - `boardDisplay.js` essential board display GUI panel
@@ -133,6 +142,13 @@ Everything should be encapsulated within the name space object `besogo`
 Change Log
 ----------
 
+#### 0.0.1-alpha
+- Tweaked widget auto-resize behavior
+- Refactored for CSS based board themes
+- Removed board hover effects for touch devices (fixes iOS issues)
+- History remembered during tree navigation
+- Favicon added to repository
+
 #### 0.0.0-alpha
 - Initial preview release
 
@@ -140,7 +156,7 @@ Change Log
 Copying and License
 -------------------
 
-Copyright (C) 2015  Ye Wang <yewang15@gmail.com>
+Copyright (C) 2015-2016  Ye Wang <yewang15@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
