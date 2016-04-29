@@ -3,23 +3,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="favicon.png" />
-<link rel="stylesheet" type="text/css" href="besogo.css">
-<link rel="stylesheet" type="text/css" href="board-std.css" id="boardStyle">
+<link rel="stylesheet" type="text/css" href="css/besogo.css">
+<link rel="stylesheet" type="text/css" href="css/board-std.css" id="boardStyle">
 
-<script src="besogo.js"></script>
-<script src="editor.js"></script>
-<script src="gameRoot.js"></script>
-<script src="svgUtil.js"></script>
-<script src="parseSgf.js"></script>
-<script src="loadSgf.js"></script>
-<script src="saveSgf.js"></script>
-<script src="boardDisplay.js"></script>
-<script src="coord.js"></script>
-<script src="toolPanel.js"></script>
-<script src="filePanel.js"></script>
-<script src="controlPanel.js"></script>
-<script src="commentPanel.js"></script>
-<script src="treePanel.js"></script>
+<script src="js/besogo.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/gameRoot.js"></script>
+<script src="js/svgUtil.js"></script>
+<script src="js/parseSgf.js"></script>
+<script src="js/loadSgf.js"></script>
+<script src="js/saveSgf.js"></script>
+<script src="js/boardDisplay.js"></script>
+<script src="js/coord.js"></script>
+<script src="js/toolPanel.js"></script>
+<script src="js/filePanel.js"></script>
+<script src="js/controlPanel.js"></script>
+<script src="js/commentPanel.js"></script>
+<script src="js/treePanel.js"></script>
 
 <body style="padding : 0px; margin : 0px;">
 <div id="target"></div>
@@ -37,7 +37,7 @@
     }
     if (options.theme === 'std' || options.theme === 'alt' || 
     	options.theme === 'dark' || options.theme === 'book') {
-    	document.getElementById('boardStyle').href = 'board-' + options.theme + '.css';
+    	document.getElementById('boardStyle').href = 'css/board-' + options.theme + '.css';
     }
 
     besogo.create(document.getElementById('target'), options);

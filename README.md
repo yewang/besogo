@@ -56,7 +56,7 @@ Web Dev Guide
 -------------
 
 #### To embed BesoGo editor/viewer in your website
-1. Link the style sheet `besogo.css` and one of the `board-*.css` sheets, which select different board themes (`std`, `alt`, `book`, `dark`). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
+1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`std`, `alt`, `book`, `dark`). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
 2. Include the combined and minified javascript file `besogo-all-min.js`.
 3. Add divs with the class `besogo-editor`, `besogo-viewer`, or `besogo-diagram`, e.g.,
    ```
@@ -78,10 +78,9 @@ BesoGo will properly load the intended characters.
 This is not a security vulnerability within BesoGo, but rather a reminder to use secure practices in your surrounding code.
 
 #### Options settable via div attributes
-- `sgf` URL (retrievable from same domain) of SGF file to load. If an URL is provided, BesoGo ignores the text within the div.
+- `sgf` sets the URL (from same domain or server with CORS enabled) of the SGF file to load. If an URL is provided, BesoGo ignores the text within the div.
 - `size` sets the size of the empty board loaded if no SGF text or URL is provided.
-Square sizes can be specified by a single number (e.g., "19", "13") and rectangular sizes are specified by two numbers separated by a colon (e.g., "9:15").
-Sizes from "1:1" to "52:52" are supported.
+Square sizes can be specified by a single number (e.g., "19", "13") and rectangular sizes are specified by two numbers separated by a colon (e.g., "9:15"). Sizes from "1:1" to "52:52" are supported.
 - `coord` sets the initial coordinate system, which is by default `none`, and can be choosen from the following options:
    - `none` no coordinate labels
    - `western` chess-style coordinates using numbers and letters
@@ -108,22 +107,19 @@ Sizes from "1:1" to "52:52" are supported.
 Code Doc
 --------
 
+#### Combining and minifying the JavaScript
+
 The js files can be combined into a single file in lexical order (the only requirement is that `besogo.js` should be first)
 ```
-cat *.js > besogo-all.js
+cat js/* > besogo.all.js
 ```
 
-Use the [Google Closure Compiler](https://closure-compiler.appspot.com/) on this combined file to produce the minified version `besogo-all-min.js`
+Use the [Google Closure Compiler](https://closure-compiler.appspot.com/) on this combined file to produce the minified version `besogo.min.js`
 
-Everything should be encapsulated within the name space object `besogo`
+Everything is (or at least should be) encapsulated within the name space object `besogo`
 
-#### Outline of source files
+#### Outline of JavaScript files in `js` folder
 - `besogo.js` establishes name space, core functions `autoInit` and `create` compose the editor and GUI objects
-- `besoso.css` defines GUI layout and main rendering options
-- `besogo-std.css` standard board theme
-- `besogo-alt.css` alternate board theme
-- `besogo-book.css` book (black and white) board theme 
-- `besogo-dark.css` dark (night mode) board theme
 - `editor.js` core editor logic managing game tree, handling input from GUI panels, and notifying GUI panels of state changes
 - `gameRoot.js` data structure that internally represents the game tree
 - `boardDisplay.js` essential board display GUI panel
@@ -137,6 +133,13 @@ Everything should be encapsulated within the name space object `besogo`
 - `parseSgf.js` parser to extract data structure from SGF text
 - `loadSgf.js` loads SGF data structure into game tree
 - `saveSgf.js` composes SGF file from game tree data structure
+
+#### Outline of CSS files in `css` folder
+- `besoso.css` defines GUI layout and main rendering options
+- `besogo-std.css` standard board theme
+- `besogo-alt.css` alternate board theme
+- `besogo-book.css` book (black and white) board theme 
+- `besogo-dark.css` dark (night mode) board theme
 
 
 Change Log
