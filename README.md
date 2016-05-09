@@ -6,7 +6,7 @@ Embeddable SGF player for the game of Go (aka Weiqi, Baduk)
 Written in JavaScript, CSS, and HTML5, with no dependencies on other libraries
 
 Free software released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html).
-Some bundled assets are copyright by other authors and available under (Creative Commons)[http://creativecommons.org] licensing terms.
+Some bundled assets are copyright by other authors and available under [Creative Commons](http://creativecommons.org) licensing terms.
 See "Copying and License" section for further details.
 
 
@@ -194,7 +194,7 @@ If not, see <http://www.gnu.org/licenses/>.
 
 ### Graphical Assets
 
-The contents of the `img/` directory are copyright by other authors and available under the license terms, as specified in the following.
+The contents of the `img/` directory are copyright by other authors and available under the license terms, as specified below
 
 The following images are from the [go-assets](https://github.com/atarnowsky/go-assets) repository, available under a [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) license.
 Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>
@@ -203,4 +203,4 @@ Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>
 
 The following images are from (or derived from) the [jgoboard](https://github.com/jokkebk/jgoboard) repository, available under a [Creative Commons Attribution-NonCommercial 4.0 International](http://creativecommons.org/licenses/by-nc/4.0/) license.
 Copyright (C) 2013 Joonas Pihlajamaa <github@joonaspihlajamaa.com>
-- `img/shinkaya1.jpg` and it derivatives `img/shinkaya2.jpg` and `img/shinkaya3.jpg`
+- `img/shinkaya1.jpg` and its derivatives `img/shinkaya2.jpg` and `img/shinkaya3.jpg`
