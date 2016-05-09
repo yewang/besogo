@@ -33,11 +33,22 @@ besogo.create = function(container, options) {
         options.panels = options.panels.split(' ');
     }
     options.path = options.path || '';
+    if (options.shadows === undefined) {
+        options.shadows = 'auto'
+    } else if (options.shadows === 'off') {
+        options.shadows = false;
+    }
 
     // Make the core editor object
     editor = besogo.makeEditor(options.size.x, options.size.y);
     editor.setTool(options.tool);
     editor.setCoordStyle(options.coord);
+    if (options.realstones) { // Using realistic stones
+        editor.REAL_STONES = true;
+        editor.SHADOWS = options.shadows;
+    } else { // SVG stones
+        editor.SHADOWS = (options.shadows && options.shadows !== 'auto');
+    }
 
     if (!options.nokeys) { // Add keypress handler unless nokeys option is truthy
         addKeypressHandler(container, editor);

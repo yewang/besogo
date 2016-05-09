@@ -1,11 +1,13 @@
 BesoGo
 ======
 
-Embeddable editor/viewer of SGF records for the game of Go (aka Weiqi, Baduk)
+Embeddable SGF player for the game of Go (aka Weiqi, Baduk)
 
 Written in JavaScript, CSS, and HTML5, with no dependencies on other libraries
 
-Free software released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html), see "Copying and License" below
+Free software released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html).
+Some bundled assets are copyright by other authors and available under (Creative Commons)[http://creativecommons.org] licensing terms.
+See "Copying and License" section for further details.
 
 
 User Notes
@@ -19,6 +21,8 @@ Use <http://yewang.github.io/besogo/testing.html> for an SGF editor based on the
 - <http://yewang.github.io/besogo/testing.html?theme=dark>
 - <http://yewang.github.io/besogo/testing.html?theme=book>
 - <http://yewang.github.io/besogo/testing.html?theme=alt>
+
+See experimental realistic board rendering at <http://yewang.github.io/besogo/testing.html?theme=wood&realstones=on>
 
 When entering moves, overwrite, suicide, and basic ko moves are not allowed, but can be enabled by holding down `ctrl` while clicking
 
@@ -81,6 +85,8 @@ This is not a security vulnerability within BesoGo, but rather a reminder to use
 - `sgf` sets the URL (from same domain or server with CORS enabled) of the SGF file to load. If an URL is provided, BesoGo ignores the text within the div.
 - `size` sets the size of the empty board loaded if no SGF text or URL is provided.
 Square sizes can be specified by a single number (e.g., "19", "13") and rectangular sizes are specified by two numbers separated by a colon (e.g., "9:15"). Sizes from "1:1" to "52:52" are supported.
+- `realstones` sets board rendering to use realistic stone images if set to a truthy value. Otherwise, defaults to flat SVG stones.
+- `shadows` selects whether shadows will be added beneath the stones. If omitted or set to `auto`, shadows will be added for realistic stones, but not for SVG stones. If set to `off`, shadows will not be added. If set to any other truthy value, shadows will always be added.
 - `coord` sets the initial coordinate system, which is by default `none`, and can be choosen from the following options:
    - `none` no coordinate labels
    - `western` chess-style coordinates using numbers and letters
@@ -101,7 +107,7 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
    - `n5b1b1-1z1-1n10` does the same as `20`, but overly verbose and redundant.
    - `b2,3,0,1` navigates following the 2nd child, 3rd child, last child, and first child over four steps.
 - `nokeys` turns off navigation key bindings if set to a truthy value. Otherwise, by default, navigation keys are enabled and the `tabindex` attribute of the container div is set to `0` (to enable keypress focus), if not already set.
-- `noresize` turns off auto-resizing behavior of the widget. Otherwise, by default, the widget will automatically resize and reorient (switching between landscape and portrait mode) based on the width of its parent node and the height of the display window.
+- `noresize` turns off auto-resizing behavior of the widget if set to a truthy value. Otherwise, by default, the widget will automatically resize and reorient (switching between landscape and portrait mode) based on the width of its parent node and the height of the display window.
 
 
 Code Doc
@@ -118,7 +124,7 @@ Use the [Google Closure Compiler](https://closure-compiler.appspot.com/) on this
 
 Everything is (or at least should be) encapsulated within the name space object `besogo`
 
-#### Outline of JavaScript files in `js` folder
+#### JavaScript files in `js/` folder
 - `besogo.js` establishes name space, core functions `autoInit` and `create` compose the editor and GUI objects
 - `editor.js` core editor logic managing game tree, handling input from GUI panels, and notifying GUI panels of state changes
 - `gameRoot.js` data structure that internally represents the game tree
@@ -128,18 +134,25 @@ Everything is (or at least should be) encapsulated within the name space object 
 - `toolPanel.js` GUI panel for tool selector buttons
 - `treePanel.js` GUI panel for game tree visualization
 - `filePanel.js` GUI panel for save, load, and new board buttons
-- `coord.js` utility functions for generate coordinate system labels
-- `svgUtil.js` utility SVG element creation functions
-- `parseSgf.js` parser to extract data structure from SGF text
+- `coord.js` utility functions for coordinate system labels
+- `svgUtil.js` utility functions for SVG composition
+- `parseSgf.js` parses and extracts data structure from SGF text
 - `loadSgf.js` loads SGF data structure into game tree
 - `saveSgf.js` composes SGF file from game tree data structure
 
-#### Outline of CSS files in `css` folder
+#### CSS files in `css/` folder
 - `besoso.css` defines GUI layout and main rendering options
 - `besogo-std.css` standard board theme
 - `besogo-alt.css` alternate board theme
 - `besogo-book.css` book (black and white) board theme 
 - `besogo-dark.css` dark (night mode) board theme
+- `besogo-wood.css` wood grain board theme
+
+#### Graphical assets in `img/` folder
+These images are used for realistic board and stone rendering
+- `black0.png` ... `black3.png`
+- `white0.png` ... `white10.png`
+- `shinkaya1.jpg` ... `shinkaya3.jpg`
 
 
 Change Log
@@ -159,6 +172,10 @@ Change Log
 Copying and License
 -------------------
 
+### Software Code
+
+The following copyright and license terms only apply to the software code, which consists of all of the files **excluding** the contents of the `img/` directory.
+
 Copyright (C) 2015-2016  Ye Wang <yewang15@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
@@ -172,6 +189,18 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program (see the LICENSE files in the source distribution).
+If not, see <http://www.gnu.org/licenses/>.
 
-See the LICENSE file in the source distribution for a copy of the license.
+### Graphical Assets
+
+The contents of the `img/` directory are copyright by other authors and available under the license terms, as specified in the following.
+
+The following images are from the [go-assets](https://github.com/atarnowsky/go-assets) repository, available under a [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) license.
+Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>
+- 4 black stone images `img/black0.png` ... `img/black3.png`
+- 11 white stone images `img/white0.png` ... `img/white10.png`
+
+The following images are from (or derived from) the [jgoboard](https://github.com/jokkebk/jgoboard) repository, available under a [Creative Commons Attribution-NonCommercial 4.0 International](http://creativecommons.org/licenses/by-nc/4.0/) license.
+Copyright (C) 2013 Joonas Pihlajamaa <github@joonaspihlajamaa.com>
+- `img/shinkaya1.jpg` and it derivatives `img/shinkaya2.jpg` and `img/shinkaya3.jpg`

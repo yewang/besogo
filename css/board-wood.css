@@ -1,0 +1,38 @@
+/* Standard Board theme */
+
+.besogo-svg-board {
+    fill: none; /* Board color*/
+}
+.besogo-board {
+    background-image: url("../img/shinkaya3.jpg");
+    background-size: cover;
+}
+
+.besogo-svg-lines {
+    stroke: black;
+    stroke-width: 4;
+    fill: none;
+}
+
+.besogo-svg-hoshi {
+    stroke: black;
+    stroke-width: 16;
+}
+
+.besogo-svg-blackStone {
+    fill: black;
+    stroke: black;
+    stroke-width: 4;
+}
+
+.besogo-svg-whiteStone {
+    fill: white;
+    stroke: white;
+    stroke-width: 4;
+}
+
+.besogo-svg-greyStone {
+    fill: #929591;
+    stroke: #929591;
+    stroke-width: 4;
+}

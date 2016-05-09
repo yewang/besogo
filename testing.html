@@ -27,17 +27,25 @@
 <script type="text/javascript">
 (function() {
     var options = {},
-        searchString = location.search.substring(1),
+        searchString = location.search.substring(1), // Drop question mark
         params = searchString.split("&"),
+        element,
         i, value; // Scratch iteration variables
 
     for (i = 0; i < params.length; i++) {
-        value = params[i].split("=");
-        options[value[0]] = value[1];
+        value = params[i].split("="); // Splits on all "=" symbols
+        options[value.shift()] = value.join("="); // First "=" separates value from name, rest are part of value
     }
-    if (options.theme === 'std' || options.theme === 'alt' || 
-    	options.theme === 'dark' || options.theme === 'book') {
-    	document.getElementById('boardStyle').href = 'css/board-' + options.theme + '.css';
+    if (options.theme === 'std' || options.theme === 'alt' || options.theme === 'dark' ||
+        options.theme === 'book' || options.theme === 'wood') { // Board style theme
+        document.getElementById('boardStyle').href = 'css/board-' + options.theme + '.css';
+    }
+    if (options.css) { // Option for linking additional CSS files
+        element = document.createElement( "link" );
+        element.href = options.css;
+        element.type = "text/css";
+        element.rel = "stylesheet";
+        document.head.appendChild(element);
     }
 
     besogo.create(document.getElementById('target'), options);

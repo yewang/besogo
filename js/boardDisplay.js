@@ -1,7 +1,7 @@
 besogo.makeBoardDisplay = function(container, editor) {
     'use strict';
     var CELL_SIZE = 88, // Including line width
-        COORD_MARGIN = 48, // Margin for coordinate labels
+        COORD_MARGIN = 55, // Margin for coordinate labels
         EXTRA_MARGIN = 0, // Extra margin on the edge of board
         BOARD_MARGIN, // Total board margin
 
@@ -15,6 +15,8 @@ besogo.makeBoardDisplay = function(container, editor) {
         hoverGroup, // Group for hover layer
         markupLayer, // Array of markup layer elements
         hoverLayer, // Array of hover layer elements
+
+        randIndex, // Random index for stone images
 
         TOUCH_FLAG = false; // Flag for touch interfaces
 
@@ -51,6 +53,10 @@ besogo.makeBoardDisplay = function(container, editor) {
         }
 
         addEventTargets(); // Add mouse event listener layer
+
+        if (editor.REAL_STONES) { // Generate index for realistic stone images
+            randomizeIndex();
+        }
     }
 
     // Callback for board display redraws
@@ -212,6 +218,19 @@ besogo.makeBoardDisplay = function(container, editor) {
         }
     }
 
+    // Remakes the randomized index for stone images
+    function randomizeIndex() {
+        var maxIndex = besogo.BLACK_STONES * besogo.WHITE_STONES,
+            i, j;
+
+        randIndex = [];
+        for (i = 1; i <= sizeX; i++) {
+            for (j = 1; j <= sizeY; j++) {
+                randIndex[fromXY(i, j)] = Math.floor(Math.random() * maxIndex);
+            }
+        }
+    }
+
     // Adds a grid of squares to register mouse events
     function addEventTargets() {
         var element,
@@ -269,7 +288,13 @@ besogo.makeBoardDisplay = function(container, editor) {
     // Redraws the stones
     function redrawStones(current) {
         var group = besogo.svgEl("g"), // New stone layer group
+            shadowGroup, // Group for shadow layer
             i, j, x, y, color; // Scratch iteration variables
+
+        if (editor.SHADOWS) { // Add group for shawdows
+            shadowGroup = besogo.svgShadowGroup();
+            group.appendChild(shadowGroup);
+        }
 
         for (i = 1; i <= sizeX; i++) {
             for (j = 1; j <= sizeY; j++) {
@@ -277,7 +302,17 @@ besogo.makeBoardDisplay = function(container, editor) {
                 if (color) {
                     x = svgPos(i);
                     y = svgPos(j);
-                    group.appendChild(besogo.svgStone(x, y, color));
+
+                    if (editor.REAL_STONES) { // Realistic stone
+                        group.appendChild(besogo.realStone(x, y, color, randIndex[fromXY(i, j)]));
+                    } else { // SVG stone
+                        group.appendChild(besogo.svgStone(x, y, color));
+                    }
+
+                    if (editor.SHADOWS) { // Draw shadows
+                        shadowGroup.appendChild(besogo.svgShadow(x - 2, y - 4));
+                        shadowGroup.appendChild(besogo.svgShadow(x + 2, y + 4));
+                    }
                 }
             }
         }

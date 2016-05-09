@@ -10,6 +10,9 @@ besogo.GREY = '#929591'; // Between white and black
 besogo.GOLD = '#dbb40c'; // Tool selection
 besogo.TURQ = '#06c2ac'; // Turqoise (nav selection)
 
+besogo.BLACK_STONES = 4; // Number of black stone images
+besogo.WHITE_STONES = 11; // Number of white stone images
+
 // Makes an SVG element with given name and attributes
 besogo.svgEl = function(name, attributes) {
     var attr, // Scratch iteration variable
@@ -20,6 +23,55 @@ besogo.svgEl = function(name, attributes) {
             element.setAttribute(attr, attributes[attr]);
         }
     }
+    return element;
+};
+
+// Makes an SVG group for containing the shadow layer
+besogo.svgShadowGroup = function() {
+    var group = besogo.svgEl('g'),
+        filter = besogo.svgEl('filter', { id: 'blur' }),
+        blur = besogo.svgEl('feGaussianBlur', {
+            in: 'SourceGraphic',
+            stdDeviation: '3'
+        });
+
+    filter.appendChild(blur);
+    group.appendChild(filter);
+    return group;
+}
+
+// Makes a stone shadow
+besogo.svgShadow = function(x, y) {
+    return besogo.svgEl("circle", {
+        cx: x,
+        cy: y,
+        r: 44,
+        stroke: 'none',
+        fill: 'black',
+        opacity: 0.35,
+        filter: 'url(#blur)'
+    });
+}
+
+// Makes a photo realistic stone element
+besogo.realStone = function(x, y, color, index) {
+    var element;
+
+    if (color < 0) {
+        color = 'black' + (index % besogo.BLACK_STONES);
+    } else {
+        color = 'white' + (index % besogo.WHITE_STONES)
+    }
+    color = 'img/' + color + '.png';
+
+    element =  besogo.svgEl("image", {
+        x: (x - 44),
+        y: (y - 44),
+        height: 88,
+        width: 88
+    });
+    element.setAttributeNS('http://www.w3.org/1999/xlink', 'href', color);
+
     return element;
 };
 
