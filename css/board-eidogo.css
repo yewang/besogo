@@ -1,29 +1,29 @@
-/* Standard board theme */
+/* EidoGo mimic board theme */
 
 .besogo-svg-board {
-    fill: #e0bb6c;
+    fill: #ddbc6b;
 }
 
 .besogo-svg-lines {
-    stroke: black;
+    stroke: #ae9454;
     stroke-width: 4;
     fill: none;
 }
 
 .besogo-svg-hoshi {
-    stroke: black;
-    stroke-width: 16;
+    stroke: #705f36;
+    stroke-width: 14;
 }
 
 .besogo-svg-blackStone {
-    fill: black;
+    fill: #292929;
     stroke: black;
     stroke-width: 4;
 }
 
 .besogo-svg-whiteStone {
-    fill: white;
-    stroke: white;
+    fill: #f2f2f2;
+    stroke: #838383;
     stroke-width: 4;
 }
 

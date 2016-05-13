@@ -1,7 +1,7 @@
-/* Standard Board theme */
+/* Dark board theme */
 
 .besogo-svg-board {
-    fill: #3c4142; /* Board color*/
+    fill: #3c4142;
 }
 
 .besogo-svg-lines {
@@ -33,7 +33,7 @@
     stroke-width: 4;
 }
 
-/* Overuling standard GUI theme */
+/* Overriding standard GUI theme */
 .besogo-container {
     color: #929591;
     background: #1b2431;

@@ -1,18 +1,18 @@
-/* Standard board theme */
+/* Sensei's Library mimic board theme */
 
 .besogo-svg-board {
-    fill: #e0bb6c;
+    fill: #f2b06d;
 }
 
 .besogo-svg-lines {
     stroke: black;
-    stroke-width: 4;
+    stroke-width: 3;
     fill: none;
 }
 
 .besogo-svg-hoshi {
     stroke: black;
-    stroke-width: 16;
+    stroke-width: 18;
 }
 
 .besogo-svg-blackStone {
@@ -23,7 +23,7 @@
 
 .besogo-svg-whiteStone {
     fill: white;
-    stroke: white;
+    stroke: black;
     stroke-width: 4;
 }
 

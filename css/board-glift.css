@@ -1,18 +1,18 @@
-/* Standard board theme */
+/* Glift mimic board theme */
 
 .besogo-svg-board {
-    fill: #e0bb6c;
+    fill: #f5be7e;
 }
 
 .besogo-svg-lines {
     stroke: black;
-    stroke-width: 4;
+    stroke-width: 2;
     fill: none;
 }
 
 .besogo-svg-hoshi {
     stroke: black;
-    stroke-width: 16;
+    stroke-width: 24;
 }
 
 .besogo-svg-blackStone {
@@ -23,7 +23,7 @@
 
 .besogo-svg-whiteStone {
     fill: white;
-    stroke: white;
+    stroke: black;
     stroke-width: 4;
 }
 
