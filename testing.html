@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" type="text/css" href="css/besogo.css">
-<link rel="stylesheet" type="text/css" href="css/board-std.css" id="boardStyle">
+<link rel="stylesheet" type="text/css" href="css/board-std.css">
 
 <script src="js/besogo.js"></script>
 <script src="js/editor.js"></script>
@@ -29,26 +29,28 @@
     var options = {},
         searchString = location.search.substring(1), // Drop question mark
         params = searchString.split("&"),
-        element,
         i, value; // Scratch iteration variables
 
     for (i = 0; i < params.length; i++) {
         value = params[i].split("="); // Splits on all "=" symbols
         options[value.shift()] = value.join("="); // First "=" separates value from name, rest are part of value
     }
-    if (options.theme === 'std' || options.theme === 'alt' || options.theme === 'dark' ||
-        options.theme === 'book' || options.theme === 'wood') { // Board style theme
-        document.getElementById('boardStyle').href = 'css/board-' + options.theme + '.css';
+    if (options.theme) { // Board style theme (overrides std theme if set)
+        addStyleLink('css/board-' + options.theme + '.css');
     }
     if (options.css) { // Option for linking additional CSS files
-        element = document.createElement( "link" );
-        element.href = options.css;
-        element.type = "text/css";
-        element.rel = "stylesheet";
-        document.head.appendChild(element);
+        addStyleLink(options.css);
     }
 
     besogo.create(document.getElementById('target'), options);
+
+    function addStyleLink(cssURL) {
+        var element = document.createElement('link');
+        element.href = cssURL;
+        element.type = 'text/css';
+        element.rel = 'stylesheet';
+        document.head.appendChild(element);
+    }
 })();
 </script>
 
