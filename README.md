@@ -152,7 +152,7 @@ Everything is (or at least should be) encapsulated within the name space object 
 These images are used for realistic board and stone rendering
 - `black0.png` ... `black3.png`
 - `white0.png` ... `white10.png`
-- `shinkaya1.jpg` ... `shinkaya3.jpg`
+- `shinkaya1.jpg` ... `shinkaya4.jpg`
 
 
 Change Log
@@ -203,4 +203,4 @@ Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>
 
 The following images are from (or derived from) the [jgoboard](https://github.com/jokkebk/jgoboard) repository, available under a [Creative Commons Attribution-NonCommercial 4.0 International](http://creativecommons.org/licenses/by-nc/4.0/) license.
 Copyright (C) 2013 Joonas Pihlajamaa <github@joonaspihlajamaa.com>
-- `img/shinkaya1.jpg` and its derivatives `img/shinkaya2.jpg` and `img/shinkaya3.jpg`
+- `img/shinkaya1.jpg` and its derivatives `img/shinkaya2.jpg` ... `img/shinkaya4.jpg`

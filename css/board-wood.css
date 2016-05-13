@@ -1,10 +1,10 @@
-/* Standard Board theme */
+/* Kaya board theme */
 
 .besogo-svg-board {
-    fill: none; /* Board color*/
+    fill: none;
 }
 .besogo-board {
-    background-image: url("../img/shinkaya3.jpg");
+    background: url("../img/shinkaya4.jpg");
     background-size: cover;
 }
 
