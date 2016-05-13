@@ -12,10 +12,12 @@ besogo.makeTreePanel = function(container, editor) {
 
     // Callback for handling tree changes
     function treeUpdate(msg) {
-        if (msg.treeChange) {
-            rebuildNavTree();
-        } else if (msg.navChange) {
-            updateCurrentMarker();
+        if (msg.treeChange) { // Tree structure changed
+            rebuildNavTree(); // Rebuild entire tree
+        } else if (msg.navChange) { // Only navigation changed
+            updateCurrentMarker(); // Update current location marker
+        } else if (msg.stoneChange) { // Only stones in current changed
+            updateCurrentNodeIcon();
         }
     }
 
@@ -171,7 +173,14 @@ besogo.makeTreePanel = function(container, editor) {
         node.navTreeY = y;
 
         return element;
-    } // END function placeNodeIcon
+    } // END function makeNodeIcon
+
+    function updateCurrentNodeIcon() { // Updates the current node icon
+        var current = editor.getCurrent(), // Current location in game state tree
+            oldIcon = current.navTreeIcon,
+            newIcon = makeNodeIcon(current, current.navTreeX, current.navTreeY);
+        svg.replaceChild(newIcon, oldIcon);
+    }
 
     function addSelectionMarker(node, x, y) {
         var element = besogo.svgEl("rect", { // Create selection marker

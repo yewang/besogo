@@ -34,7 +34,7 @@ besogo.create = function(container, options) {
     }
     options.path = options.path || '';
     if (options.shadows === undefined) {
-        options.shadows = 'auto'
+        options.shadows = 'auto';
     } else if (options.shadows === 'off') {
         options.shadows = false;
     }
