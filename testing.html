@@ -38,9 +38,6 @@
     if (options.theme) { // Board style theme (overrides std theme if set)
         addStyleLink('css/board-' + options.theme + '.css');
     }
-    if (options.css) { // Option for linking additional CSS files
-        addStyleLink(options.css);
-    }
 
     besogo.create(document.getElementById('target'), options);
 
