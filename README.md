@@ -121,6 +121,7 @@ Everything is (or at least should be) encapsulated within the name space object 
 `./build.sh` automatically generates the combined and minified versions (requires shell, cat, curl, and internet access)
 
 Alternatively, you can manually combine and minify as follows
+
 1. Cobmine the js files into a single file (just ensure that `besogo.js` is first), e.g., with `cat js/* > besogo.all.js`
 2. Use the [Google Closure Compiler](https://closure-compiler.appspot.com/) to minify the combined file
 
