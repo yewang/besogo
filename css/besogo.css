@@ -65,7 +65,7 @@
 }
 
 .besogo-blackInfo {
-    flex: 1 1 auto;
+    flex: 50%;
     color: white;
     background: black;
     text-align: right;
@@ -73,7 +73,7 @@
 }
 
 .besogo-whiteInfo {
-    flex: 1 1 auto;
+    flex: 50%;
     color: black;
     background: white;
     text-align: left;

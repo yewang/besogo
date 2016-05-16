@@ -28,7 +28,9 @@ besogo.makeNamesPanel = function(container, editor) {
 
     function update(msg) {
         var infoString, // Scratch string
-            textNode;
+            textNode,
+            current,
+            passFlag = 0;
 
         if (msg.gameInfo) {
             infoString = (msg.gameInfo.PW || 'White') + ' ' // White name
@@ -47,8 +49,12 @@ besogo.makeNamesPanel = function(container, editor) {
         }
 
         if (msg.navChange || msg.stoneChange) {
-            updateText(whiteCaps, editor.getCurrent().whiteCaps);
-            updateText(blackCaps, editor.getCurrent().blackCaps);
+            current = editor.getCurrent();
+            if (current.move && current.move.x === 0 && current.move.y === 0) {
+                passFlag = current.move.color;
+            }
+            updateText(whiteCaps, (passFlag === 1 ? 'Passed  ' : '') + current.whiteCaps);
+            updateText(blackCaps, current.blackCaps + (passFlag === -1 ? '  Passed' : ''));
         }
     }
 
