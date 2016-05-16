@@ -114,16 +114,15 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
 Code Doc
 --------
 
+Everything is (or at least should be) encapsulated within the name space object `besogo`
+
 #### Combining and minifying the JavaScript
 
-The js files can be combined into a single file in lexical order (the only requirement is that `besogo.js` should be first)
-```
-cat js/* > besogo.all.js
-```
+`./build.sh` automatically generates the combined and minified versions (requires shell, cat, curl, and internet access)
 
-Use the [Google Closure Compiler](https://closure-compiler.appspot.com/) on this combined file to produce the minified version `besogo.min.js`
-
-Everything is (or at least should be) encapsulated within the name space object `besogo`
+Alternatively, you can manually combine and minify as follows
+1. Cobmine the js files into a single file (just ensure that `besogo.js` is first), e.g., with `cat js/* > besogo.all.js`
+2. Use the [Google Closure Compiler](https://closure-compiler.appspot.com/) to minify the combined file
 
 #### JavaScript files in `js/` folder
 - `besogo.js` establishes name space, core functions `autoInit` and `create` compose the editor and GUI objects
@@ -173,7 +172,7 @@ Change Log
 Copying and License
 -------------------
 
-### Software Code
+#### Software Code
 
 The following copyright and license terms only apply to the software code, which consists of all of the files **excluding** the contents of the `img/` directory.
 
@@ -193,7 +192,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program (see the LICENSE files in the source distribution).
 If not, see <http://www.gnu.org/licenses/>.
 
-### Graphical Assets
+#### Graphical Assets
 
 The contents of the `img/` directory are copyright by other authors and available under the license terms, as specified below
 
