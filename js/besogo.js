@@ -10,6 +10,7 @@ besogo.create = function(container, options) {
         panelsDiv, // Parent container of panel divs
         makers = { // Map to panel creators
             control: besogo.makeControlPanel,
+            names: besogo.makeNamesPanel,
             comment: besogo.makeCommentPanel,
             tool: besogo.makeToolPanel,
             tree: besogo.makeTreePanel,
@@ -28,7 +29,7 @@ besogo.create = function(container, options) {
     if (options.panels === '') {
         options.panels = [];
     }
-    options.panels = options.panels || 'control comment tool tree file';
+    options.panels = options.panels || 'control names comment tool tree file';
     if (typeof options.panels === 'string') {
         options.panels = options.panels.split(' ');
     }
@@ -175,10 +176,10 @@ besogo.autoInit = function() {
     for (i = 0; i < targetDivs.length; i++) { // Iterate over target divs
         options = {}; // Clear the options struct
         if (hasClass(targetDivs[i], 'besogo-editor')) {
-            options.panels = ['control', 'comment', 'tool', 'tree', 'file'];
+            options.panels = ['control', 'names', 'comment', 'tool', 'tree', 'file'];
             options.tool = 'auto';
         } else if (hasClass(targetDivs[i], 'besogo-viewer')) {
-            options.panels = ['control', 'comment'];
+            options.panels = ['control', 'names', 'comment'];
             options.tool = 'navOnly';
         } else if (hasClass(targetDivs[i], 'besogo-diagram')) {
             options.panels = [];

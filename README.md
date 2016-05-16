@@ -96,6 +96,7 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
    - `eastcor` corner-relative system using numbers and CJK symbols
 - `panels` space-separated list of which GUI elements are added in the GUI. The following panels are supported:
    - `control` navigation control buttons
+   - `name` player names, ranks, and captures
    - `comment` comments and game info
    - `tool` editing tool selector buttons
    - `tree` game tree visualization

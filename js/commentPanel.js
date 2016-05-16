@@ -1,10 +1,6 @@
 besogo.makeCommentPanel = function(container, editor) {
     'use strict';
     var infoTexts = {}, // Holds text nodes for game info properties
-        playerBox = document.createElement('div'),
-        whiteInfo = document.createElement('div'),
-        blackInfo = document.createElement('div'),
-        infoBox = document.createElement('div'),
         gameInfoTable = document.createElement('table'),
         gameInfoEdit = document.createElement('table'),
         commentBox = document.createElement('div'),
@@ -41,22 +37,15 @@ besogo.makeCommentPanel = function(container, editor) {
             CP: 'Copyright'
         };
 
-    playerBox.className = 'besogo-playerInfo';
-    container.appendChild(playerBox);
-    playerBox.appendChild( makePlayerBox(['PW', 'WR', 'WT','wCaps'], 'white', whiteInfo) );
-    playerBox.appendChild( makePlayerBox(['PB', 'BR', 'BT', 'bCaps'], 'black', blackInfo) );
-
-    infoBox.className = 'besogo-commentText';
-    container.appendChild(infoBox);
-    infoBox.appendChild(makeInfoButton());
-    infoBox.appendChild(makeInfoEditButton());
-    infoBox.appendChild(makeCommentButton());
-    infoBox.appendChild(gameInfoTable);
-    infoBox.appendChild(gameInfoEdit);
+    container.appendChild(makeInfoButton());
+    container.appendChild(makeInfoEditButton());
+    container.appendChild(makeCommentButton());
+    container.appendChild(gameInfoTable);
+    container.appendChild(gameInfoEdit);
     infoTexts.C = document.createTextNode('');
-    infoBox.appendChild(commentBox);
+    container.appendChild(commentBox);
     commentBox.appendChild(infoTexts.C);
-    infoBox.appendChild(commentEdit);
+    container.appendChild(commentEdit);
 
     commentEdit.onblur = function() {
         editor.setComment(commentEdit.value);
@@ -71,7 +60,7 @@ besogo.makeCommentPanel = function(container, editor) {
     gameInfoEdit.style.display = 'none'; // Hide game info editting table initially
 
     function update(msg) {
-        var temp;
+        var temp; // Scratch for strings
 
         if (msg.navChange) {
             temp = editor.getCurrent().comment || '';
@@ -90,32 +79,9 @@ besogo.makeCommentPanel = function(container, editor) {
             commentEdit.value = msg.comment;
         }
 
-        if (msg.gameInfo) {
-            temp = (msg.gameInfo.PW || 'White') + ' ';
-            updateText(whiteInfo, temp, 'PW'); // White name
-
-            temp = '(' + (msg.gameInfo.WR || '?') + ')';
-            updateText(whiteInfo, temp, 'WR'); // White rank
-
-            temp = (msg.gameInfo.WT ? ' ' + msg.gameInfo.WT : '') + '\n';
-            updateText(whiteInfo, temp, 'WT'); // White team
-
-            temp = (msg.gameInfo.PB || 'Black') + ' ';
-            updateText(blackInfo, temp, 'PB'); // Black name
-
-            temp = '(' + (msg.gameInfo.BR || '?') + ')';
-            updateText(blackInfo, temp, 'BR'); // Black rank
-
-            temp = (msg.gameInfo.BT ? ' ' + msg.gameInfo.BT : '') + '\n';
-            updateText(blackInfo, temp, 'BT'); // Black team
-
-            updateGameInfoTable(msg.gameInfo); // Update other game info
+        if (msg.gameInfo) { // Update game info
+            updateGameInfoTable(msg.gameInfo);
             updateGameInfoEdit(msg.gameInfo);
-        }
-
-        if (msg.navChange || msg.stoneChange) {
-            updateText(whiteInfo, editor.getCurrent().whiteCaps + ' captures', 'wCaps');
-            updateText(blackInfo, editor.getCurrent().blackCaps + ' captures', 'bCaps');
         }
     } // END function update
 
@@ -144,7 +110,7 @@ besogo.makeCommentPanel = function(container, editor) {
         if (!table.firstChild || gameInfoTable.style.display === 'none') {
             table.style.display = 'none'; // Do not display empty table or if already hidden
         }
-        infoBox.replaceChild(table, gameInfoTable);
+        container.replaceChild(table, gameInfoTable);
         gameInfoTable = table;
     }
     
@@ -183,7 +149,7 @@ besogo.makeCommentPanel = function(container, editor) {
         if (gameInfoEdit.style.display === 'none') {
             table.style.display = 'none'; // Hide if already hidden
         }
-        infoBox.replaceChild(table, gameInfoEdit);
+        container.replaceChild(table, gameInfoEdit);
         gameInfoEdit = table;
     }
 
@@ -247,15 +213,4 @@ besogo.makeCommentPanel = function(container, editor) {
         return button;
     }
 
-    function makePlayerBox(ids, player, box) {
-        var i; // Scratch iteration variable
-
-        box.className = 'besogo-' + player + 'Info';
-        for (i = 0; i < ids.length ; i++) {
-            infoTexts[ ids[i] ] = document.createTextNode('');
-            box.appendChild( infoTexts[ ids[i] ] );
-        }
-
-        return box;
-    }
 };

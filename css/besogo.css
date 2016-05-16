@@ -53,9 +53,46 @@
     flex: 0 0 auto;
 }
 
+.besogo-names {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.besogo-playerInfo {
+    display: flex;
+    font-family: Tahoma, Geneva, sans-serif;
+    white-space: pre-wrap;
+}
+
+.besogo-blackInfo {
+    flex: 1 1 auto;
+    color: white;
+    background: black;
+    text-align: right;
+    padding: 5px;
+}
+
+.besogo-whiteInfo {
+    flex: 1 1 auto;
+    color: black;
+    background: white;
+    text-align: left;
+    padding: 5px;
+}
+
+.besogo-blackCaps {
+    float: left;
+}
+
+.besogo-whiteCaps {
+    float: right;
+}
+
 .besogo-comment {
     font-family: Georgia, serif;
     font-size: 12pt;
+    white-space: pre-wrap;
+
 
     overflow: auto;
     flex: 1 1 60%;
@@ -71,25 +108,6 @@
     width: 100%;
 }
 
-.besogo-playerInfo {
-    display: flex;
-    white-space: pre-wrap;
-}
-
-.besogo-blackInfo {
-    flex: 1 1 auto;
-    color: white;
-    background: black;
-    text-align: right;
-}
-
-.besogo-whiteInfo {
-    flex: 1 1 auto;
-    color: black;
-    background: white;
-    text-align: left;
-}
-
 .besogo-gameInfo {
     padding: 5px;
     border-collapse: collapse;
@@ -97,11 +115,7 @@
 
 .besogo-gameInfo td, tr {
     border: 1px solid black;
-}
-
-.besogo-commentText {
     padding: 3px;
-    white-space: pre-wrap;
 }
 
 .besogo-tool {
