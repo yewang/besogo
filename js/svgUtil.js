@@ -32,7 +32,7 @@ besogo.svgShadowGroup = function() {
         filter = besogo.svgEl('filter', { id: 'blur' }),
         blur = besogo.svgEl('feGaussianBlur', {
             in: 'SourceGraphic',
-            stdDeviation: '3'
+            stdDeviation: '2'
         });
 
     filter.appendChild(blur);
@@ -45,10 +45,10 @@ besogo.svgShadow = function(x, y) {
     return besogo.svgEl("circle", {
         cx: x,
         cy: y,
-        r: 44,
+        r: 43,
         stroke: 'none',
         fill: 'black',
-        opacity: 0.35,
+        opacity: 0.32,
         filter: 'url(#blur)'
     });
 }
