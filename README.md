@@ -20,7 +20,7 @@ An example SGF editor (based on the latest release) can be used at <http://yewan
 Use <http://yewang.github.io/besogo/testing.html> for an SGF editor based on the latest code snapshot, with experimental themes available at:
 - <http://yewang.github.io/besogo/testing.html?theme=dark>
 - <http://yewang.github.io/besogo/testing.html?theme=book>
-- <http://yewang.github.io/besogo/testing.html?theme=alt>
+- <http://yewang.github.io/besogo/testing.html?theme=simple>
 
 See experimental realistic board rendering at <http://yewang.github.io/besogo/testing.html?theme=wood&realstones=on>
 
@@ -60,7 +60,7 @@ Web Dev Guide
 -------------
 
 #### To embed BesoGo editor/viewer in your website
-1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`std`, `alt`, `book`, `dark`). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
+1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`simple`, `flat`, `book`, `dark`, `wood`, etc.). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
 2. Include the combined and minified javascript file `besogo-all-min.js`.
 3. Add divs with the class `besogo-editor`, `besogo-viewer`, or `besogo-diagram`, e.g.,
    ```
@@ -143,11 +143,15 @@ Alternatively, you can manually combine and minify as follows
 
 #### CSS files in `css/` folder
 - `besoso.css` defines GUI layout and main rendering options
-- `besogo-std.css` standard board theme
-- `besogo-alt.css` alternate board theme
+- `besogo-flat.css` standard flat board theme
+- `besogo-simple.css` simple board theme
 - `besogo-book.css` book (black and white) board theme 
 - `besogo-dark.css` dark (night mode) board theme
 - `besogo-wood.css` wood grain board theme
+- `besogo-eidogo.css` board theme mimicking EidoGo
+- `besogo-glift.css` board theme mimicking Glift
+- `besogo-kibitz.css` board theme mimicking GoKibitz
+- `besogo-sensei.css` board theme mimicking Sensei's Library
 
 #### Graphical assets in `img/` folder
 These images are used for realistic board and stone rendering

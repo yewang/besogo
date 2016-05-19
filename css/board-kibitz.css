@@ -1,0 +1,34 @@
+/* GoKibitz mimic board theme */
+
+.besogo-svg-board {
+    fill: #e4bb67;
+}
+
+.besogo-svg-lines {
+    stroke: #726626;
+    stroke-width: 3;
+    fill: none;
+}
+
+.besogo-svg-hoshi {
+    stroke: #726626;
+    stroke-width: 15;
+}
+
+.besogo-svg-blackStone {
+    fill: #333333;
+    stroke: #333333;
+    stroke-width: 1;
+}
+
+.besogo-svg-whiteStone {
+    fill: #f2f2f2;
+    stroke: #f2f2f2;
+    stroke-width: 1;
+}
+
+.besogo-svg-greyStone {
+    fill: #929591;
+    stroke: #929591;
+    stroke-width: 1;
+}

@@ -1,4 +1,4 @@
-/* Alternate board theme */
+/* Flat board theme */
 
 .besogo-svg-board {
     fill: #dcb35c;
@@ -6,24 +6,24 @@
 
 .besogo-svg-lines {
     stroke: #343837;
-    stroke-width: 4;
+    stroke-width: 3.5;
     fill: none;
 }
 
 .besogo-svg-hoshi {
-    stroke: #343837;
-    stroke-width: 16;
+    stroke: #1b2431;
+    stroke-width: 14;
 }
 
 .besogo-svg-blackStone {
-    fill: black;
-    stroke: black;
+    fill: #252525;
+    stroke: #050505;
     stroke-width: 4;
 }
 
 .besogo-svg-whiteStone {
-    fill: white;
-    stroke: black;
+    fill: #ebebeb;
+    stroke: #b8b8b8;
     stroke-width: 4;
 }
 
