@@ -12,7 +12,8 @@
 
 .besogo-svg-hoshi {
     stroke: black;
-    stroke-width: 18;
+    stroke-width: 15;
+    stroke-linecap: square;
 }
 
 .besogo-svg-blackStone {
