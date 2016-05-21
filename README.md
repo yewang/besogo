@@ -143,8 +143,8 @@ Alternatively, you can manually combine and minify as follows
 
 #### CSS files in `css/` folder
 - `besoso.css` defines GUI layout and main rendering options
-- `besogo-flat.css` standard flat board theme
-- `besogo-simple.css` simple board theme
+- `besogo-flat.css` default flat board theme
+- `besogo-bold.css` bold board theme
 - `besogo-book.css` book (black and white) board theme 
 - `besogo-dark.css` dark (night mode) board theme
 - `besogo-wood.css` wood grain board theme
@@ -155,9 +155,9 @@ Alternatively, you can manually combine and minify as follows
 
 #### Graphical assets in `img/` folder
 These images are used for realistic board and stone rendering
-- `black0.png` ... `black3.png`
-- `white0.png` ... `white10.png`
-- `shinkaya1.jpg` ... `shinkaya4.jpg`
+- `black0.png` ... `black3.png` black stone slate textures
+- `white0.png` ... `white10.png` white stone shell textures 
+- `shinkaya1.jpg` ... `shinkaya4.jpg` shinkaya board textures
 
 
 Change Log
@@ -199,7 +199,7 @@ If not, see <http://www.gnu.org/licenses/>.
 
 #### Graphical Assets
 
-The contents of the `img/` directory are copyright by other authors and available under the license terms, as specified below
+The contents of the `img/` directory are copyright by other authors and available under the license terms specified below
 
 The following images are from the [go-assets](https://github.com/atarnowsky/go-assets) repository, available under a [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) license.
 Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>

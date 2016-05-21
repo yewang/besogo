@@ -1,8 +1,8 @@
 besogo.makeBoardDisplay = function(container, editor) {
     'use strict';
     var CELL_SIZE = 88, // Including line width
-        COORD_MARGIN = 55, // Margin for coordinate labels
-        EXTRA_MARGIN = 0, // Extra margin on the edge of board
+        COORD_MARGIN = 75, // Margin for coordinate labels
+        EXTRA_MARGIN = 6, // Extra margin on the edge of board
         BOARD_MARGIN, // Total board margin
 
         // Board size parameters
@@ -145,7 +145,7 @@ besogo.makeBoardDisplay = function(container, editor) {
     // Draws coordinate labels on the board
     function drawCoords(coord) {
         var labels = besogo.coord[coord](sizeX, sizeY),
-            shift = COORD_MARGIN + 18,
+            shift = COORD_MARGIN + 10,
             i, x, y; // Scratch iteration variable
 
         for (i = 1; i <= sizeX; i++) { // Draw column coordinate labels
