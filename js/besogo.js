@@ -17,6 +17,7 @@ besogo.create = function(container, options) {
             file: besogo.makeFilePanel
         },
         insideText = container.textContent || container.innerText || '',
+        width, height, // Sizing parameters
         i, panelName; // Scratch iteration variables
 
     container.className += ' besogo-container'; // Marks this div as initialized
@@ -87,19 +88,28 @@ besogo.create = function(container, options) {
         }
     }
 
-    if(!options.noresize) { // Add auto-resizing unless noresize option is truthy
+    options.resize = options.resize || 'auto';
+    if(options.resize === 'auto') { // Add auto-resizing unless resize option is truthy
         resizer = function() {
-            var width = container.parentElement.clientWidth,
-                height = window.innerHeight;
+            var parentWidth = container.parentElement.clientWidth,
+                windowHeight = window.innerHeight,
+                portraitRatio = +(options.vertratio || 200) / 100,
+                maxWidth = +(options.maxwidth || -1),
+                minPanelHeight = +(options.minpanelheight || 400),
+                minLandscapeWidth = +(options.minlandwidth || 600),
+                orientation = options.orient || 'auto';
 
-            if (width < 600 || width < height) { // Portrait mode
+                height = windowHeight,
+                width = (maxWidth > 0 && maxWidth < parentWidth) ? maxWidth : parentWidth;
+
+            if (orientation === 'vert' || width < 600 || width < height) { // Portrait mode
                 container.style['flex-direction'] = 'column';
 
                 boardDiv.style.height = width + 'px';
                 boardDiv.style.width = width + 'px';
 
                 if (panelsDiv) {
-                    panelsDiv.style.height = ( (height > 400) ? height : 400 ) + 'px';
+                    // panelsDiv.style.height = ( (height > 400) ? height : 400 ) + 'px';
                     panelsDiv.style.width = width + 'px';
                 }
             } else { // Landscape mode
@@ -115,9 +125,33 @@ besogo.create = function(container, options) {
                 boardDiv.style.height = height + 'px';
                 boardDiv.style.width = height + 'px';
             }
+            container.style.width = width + 'px';
         };
         window.addEventListener("resize", resizer);
         resizer(); // Initialize div sizing
+    }
+
+    if (options.resize === 'fixed') {
+        width = container.clientWidth;
+        height = container.clientHeight;
+
+        if (width < height) { // Portrait mode
+            container.style['flex-direction'] = 'column';
+            boardDiv.style.height = width + 'px';
+            boardDiv.style.width = width + 'px';
+            if (panelsDiv) {
+                panelsDiv.style.height = (height - width) + 'px';
+                panelsDiv.style.width = width + 'px';
+            }
+        } else { // Landscape mode
+            container.style['flex-direction'] = 'row';
+            boardDiv.style.height = height + 'px';
+            boardDiv.style.width = height + 'px';
+            if (panelsDiv) {
+                panelsDiv.style.height = height + 'px';
+                panelsDiv.style.width = (width - height) + 'px';
+            }
+        }
     }
 
     // Creates and adds divs to specified parent or container

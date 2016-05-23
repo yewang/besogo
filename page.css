@@ -1,0 +1,17 @@
+body {
+    background: #edffe6;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-weight: normal;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}

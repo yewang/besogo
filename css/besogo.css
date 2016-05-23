@@ -27,11 +27,6 @@
     width: 30px;
 }
 
-.besogo-board {
-    width: 100%;
-    height: 100%;
-}
-
 .besogo-panels {
     display: flex;
     flex-direction: column;

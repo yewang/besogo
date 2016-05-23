@@ -108,7 +108,7 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
    - `n5b1b1-1z1-1n10` does the same as `20`, but overly verbose and redundant.
    - `b2,3,0,1` navigates following the 2nd child, 3rd child, last child, and first child over four steps.
 - `nokeys` turns off navigation key bindings if set to a truthy value. Otherwise, by default, navigation keys are enabled and the `tabindex` attribute of the container div is set to `0` (to enable keypress focus), if not already set.
-- `noresize` turns off auto-resizing behavior of the widget if set to a truthy value. Otherwise, by default, the widget will automatically resize and reorient (switching between landscape and portrait mode) based on the width of its parent node and the height of the display window.
+- `resize` (WIP) turns off auto-resizing behavior of the widget if set to a truthy value. Otherwise, by default, the widget will automatically resize and reorient (switching between landscape and portrait mode) based on the width of its parent node and the height of the display window.
 
 
 Code Doc
