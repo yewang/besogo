@@ -9,25 +9,25 @@
 }
 
 .besogo-svg-lines {
-    stroke: #050505;
+    stroke: #151515;
     stroke-width: 3.5;
     fill: none;
 }
 
 .besogo-svg-hoshi {
-    stroke: #050505;
+    stroke: #151515;
     stroke-width: 14;
 }
 
 .besogo-svg-blackStone {
-    fill: black;
-    stroke: black;
+    fill: #252525;
+    stroke: #252525;
     stroke-width: 4;
 }
 
 .besogo-svg-whiteStone {
-    fill: white;
-    stroke: white;
+    fill: #f5f5f5;
+    stroke: #f5f5f5;
     stroke-width: 4;
 }
 
