@@ -30,9 +30,9 @@ besogo.create = function(container, options) {
     if (options.panels === '') {
         options.panels = [];
     }
-    options.panels = options.panels || 'control names comment tool tree file';
+    options.panels = options.panels || 'control+names+comment+tool+tree+file';
     if (typeof options.panels === 'string') {
-        options.panels = options.panels.split(' ');
+        options.panels = options.panels.split('+');
     }
     options.path = options.path || '';
     if (options.shadows === undefined) {
