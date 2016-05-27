@@ -73,7 +73,7 @@ besogo.makeCommentPanel = function(container, editor) {
                 gameInfoTable.style.display = 'none';
             }
             commentEdit.style.display = 'none';
-            commentBox.style.display = 'block'
+            commentBox.style.display = 'block';
         } else if (msg.comment !== undefined) {
             updateText(commentBox, msg.comment, 'C');
             commentEdit.value = msg.comment;
@@ -137,7 +137,7 @@ besogo.makeCommentPanel = function(container, editor) {
             text.onblur = function(t, id) {
                 return function() { // Commit change on blur
                     editor.setGameInfo(t.value, id);
-                }
+                };
             }(text, id);
             text.addEventListener('keydown', function(evt) {
                 evt = evt || window.event;

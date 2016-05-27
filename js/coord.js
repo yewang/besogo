@@ -7,7 +7,7 @@ besogo.coord = {};
 // Null function for no coordinate system
 besogo.coord.none = function(sizeX, sizeY) {
     return false;
-}
+};
 
 // Western, chess-like, "A1" coordinate system
 besogo.coord.western = function(sizeX, sizeY) {

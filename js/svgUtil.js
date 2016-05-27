@@ -38,7 +38,7 @@ besogo.svgShadowGroup = function() {
     filter.appendChild(blur);
     group.appendChild(filter);
     return group;
-}
+};
 
 // Makes a stone shadow
 besogo.svgShadow = function(x, y) {
@@ -51,7 +51,7 @@ besogo.svgShadow = function(x, y) {
         opacity: 0.32,
         filter: 'url(#blur)'
     });
-}
+};
 
 // Makes a photo realistic stone element
 besogo.realStone = function(x, y, color, index) {
@@ -60,7 +60,7 @@ besogo.realStone = function(x, y, color, index) {
     if (color < 0) {
         color = 'black' + (index % besogo.BLACK_STONES);
     } else {
-        color = 'white' + (index % besogo.WHITE_STONES)
+        color = 'white' + (index % besogo.WHITE_STONES);
     }
     color = 'img/' + color + '.png';
 
@@ -82,7 +82,7 @@ besogo.svgStone = function(x, y, color) {
     if (color === -1) { // Black stone
         className = "besogo-svg-blackStone";
     } else if (color === 1) { // White stone
-        className = "besogo-svg-whiteStone"
+        className = "besogo-svg-whiteStone";
     }
 
     return besogo.svgEl("circle", {
@@ -107,7 +107,6 @@ besogo.svgCircle = function(x, y, color) {
 
 // Makes a square at (x, y)
 besogo.svgSquare = function(x, y, color) {
-    'use strict';
     return besogo.svgEl("rect", {
         x: (x - 23),
         y: (y - 23),

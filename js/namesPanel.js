@@ -33,16 +33,16 @@ besogo.makeNamesPanel = function(container, editor) {
             passFlag = 0;
 
         if (msg.gameInfo) {
-            infoString = (msg.gameInfo.PW || 'White') + ' ' // White name
-                    + '(' + (msg.gameInfo.WR || '?') + ')' // White rank
-                    + (msg.gameInfo.WT ? ' ' + msg.gameInfo.WT : ''); // White team
+            infoString = (msg.gameInfo.PW || 'White') + // White name
+                ' (' + (msg.gameInfo.WR || '?') + ')' + // White rank
+                (msg.gameInfo.WT ? ' ' + msg.gameInfo.WT : ''); // White team
             textNode = document.createTextNode(infoString);
             whiteBox.replaceChild(textNode, whiteInfo);
             whiteInfo = textNode;
 
-            infoString = (msg.gameInfo.PB || 'Black') + ' ' // Black name
-                    + '(' + (msg.gameInfo.BR || '?') + ')' // Black rank
-                    + (msg.gameInfo.BT ? ' ' + msg.gameInfo.BT : ''); // Black team
+            infoString = (msg.gameInfo.PB || 'Black') + // Black name
+                ' (' + (msg.gameInfo.BR || '?') + ')' + // Black rank
+                (msg.gameInfo.BT ? ' ' + msg.gameInfo.BT : ''); // Black team
             textNode = document.createTextNode(infoString);
             blackBox.replaceChild(textNode, blackInfo);
             blackInfo = textNode;
@@ -64,10 +64,5 @@ besogo.makeNamesPanel = function(container, editor) {
             parent.removeChild(parent.firstChild);
         }
         parent.appendChild(textNode);
-    }
-
-    function makePlayerBox(player, box) {
-        box.className = 'besogo-' + player + 'Info';
-        return box;
     }
 };
