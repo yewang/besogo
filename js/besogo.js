@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 var besogo = window.besogo = window.besogo || {}; // Establish our namespace
-besogo.VERSION = '0.0.1-alpha';
+besogo.VERSION = '0.0.2-alpha';
 
 besogo.create = function(container, options) {
     var editor, // Core editor object
@@ -330,7 +330,7 @@ function fetchParseLoad(url, editor, path) {
     http.onreadystatechange = function() {
         if (http.readyState === 4 && http.status === 200) { // Successful fetch
             parseAndLoad(http.responseText, editor);
-            navigatePath(editor, path)
+            navigatePath(editor, path);
         }
     };
     http.overrideMimeType('text/plain'); // Prevents XML parsing and warnings

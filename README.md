@@ -188,6 +188,18 @@ These images are used for realistic board and stone rendering
 Change Log
 ----------
 
+#### 0.0.2-alpha
+- Redesigned responsive behavior
+- Added realistic stone and board rendering
+- Added and modified themes
+- Added mousewheel navigation
+- Converted index.html to demo page, moved old index.html to stable.html
+- Added fixedSize.html examples page
+- Fixed minor tree panel bug
+- Tweaked margin for coordinate labels slightly
+- Added build script for generating combined and minified releases
+- Reorganized code into folders
+
 #### 0.0.1-alpha
 - Tweaked widget auto-resize behavior
 - Refactored for CSS based board themes
