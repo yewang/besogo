@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BesoGo</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="stylesheet" type="text/css" href="page.css">
+<link rel="stylesheet" type="text/css" href="css/besogo.css">
+<link rel="stylesheet" type="text/css" href="css/board-wood.css">
+
+<script src="js/besogo.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/gameRoot.js"></script>
+<script src="js/svgUtil.js"></script>
+<script src="js/parseSgf.js"></script>
+<script src="js/loadSgf.js"></script>
+<script src="js/saveSgf.js"></script>
+<script src="js/boardDisplay.js"></script>
+<script src="js/coord.js"></script>
+<script src="js/toolPanel.js"></script>
+<script src="js/filePanel.js"></script>
+<script src="js/controlPanel.js"></script>
+<script src="js/namesPanel.js"></script>
+<script src="js/commentPanel.js"></script>
+<script src="js/treePanel.js"></script>
+
+<body onload="besogo.autoInit()">
+<div id="contentcolumn">
+
+<h1>BesoGo</h1>
+
+<div class="besogo-diagram" maxWidth="585" realstones="on" nowheel="true" nokeys="true">
+(;AB[ra][hb][lb][fc][lc][bd][ld][ce][de][fe][le][me][oe][pe][bf][mf][of][og][dh][oh][ph][qh][rh][sh][di][mi][ni][oi][pi][aj][fj][lj][ak][ek][lk][rk][sk][al][el][il][pl][ql][am][bm][em][qm][rm][dn][fn][mn][co][fo][ko][oo][bp][cp][ep][pp][sp][fq][pq][qq][sq][cr][nr][pr][bs][ns][os][ps]
+AW[qa][ib][jb][mb][rb][hc][qc][cd][jd][nd][od][ke][qe][re][df][ff][pf][bg][cg][dg][gg][hg][kg][lg][ng][ah][hi][ki][ri][si][bj][cj][jj][nj][oj][pj][qj][dk][jk][ok][dl][jl][rl][sl][hm][jm][sm][bn][cn][en][jn][on][rn][sn][qo][ro][so][ap][hp][kp][lp][mp][op][qp][eq][rq][ar][ir][mr][or][ms])
+</div>
+
+<a href="https://github.com/yewang/besogo"><h3>Free Software on GitHub</h3></a>
+<a href="testing.html?realstones=on&theme=wood"><h3>Full Page Editor</h3></a>
+<a href="testing.html"><h3>Editor with Flat Theme</h3></a></h3>
+
+<h2>Embedded Editor</h2>
+<h3>full-width, automatic orientation, all editor panels shown, realistic stones, mousewheel navigation off</h3>
+<div class="besogo-editor" realstones="on" nowheel="true"></div>
+
+<h2>Vertical Viewer</h2>
+<h3>500px max-width, vertical orientation, game tree and comment/info panels included, flat stones</h3>
+<div class="besogo-viewer" orient="portrait" panels="control+names+comment+tree" maxWidth="500" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
+Game review copyright <a href="https://github.com/gogameguru/commented-go-games">GoGameGuru</a>, licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>
+
+<h2>Minimal Vertical Viewer</h2>
+<h3>600px max-width, vertical orientation, only navigation controls and player names, realistic stones</h3>
+<div class="besogo-viewer" realstones="on" panels="control+names" orient="portrait" portratio="none" maxWidth="600" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
+Game review copyright <a href="https://github.com/gogameguru/commented-go-games">GoGameGuru</a>, licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>
+
+</div>
+</body>
+</html>

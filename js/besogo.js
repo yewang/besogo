@@ -17,7 +17,6 @@ besogo.create = function(container, options) {
             file: besogo.makeFilePanel
         },
         insideText = container.textContent || container.innerText || '',
-        width, height, // Sizing parameters
         i, panelName; // Scratch iteration variables
 
     container.className += ' besogo-container'; // Marks this div as initialized
@@ -78,6 +77,10 @@ besogo.create = function(container, options) {
     boardDiv = makeDiv('besogo-board'); // Create div for board display
     besogo.makeBoardDisplay(boardDiv, editor); // Create board display
 
+    if (!options.nowheel) { // Add mousewheel handler unless nowheel option is truthy
+        addWheelHandler(boardDiv, editor);
+    }
+
     if (options.panels.length > 0) { // Only create if there are panels to add
         panelsDiv = makeDiv('besogo-panels');
         for (i = 0; i < options.panels.length; i++) {
@@ -86,70 +89,90 @@ besogo.create = function(container, options) {
                 makers[panelName](makeDiv('besogo-' + panelName, panelsDiv), editor);
             }
         }
+        if (!panelsDiv.firstChild) { // If no panels were added
+            container.removeChild(panelsDiv); // Remove the panels div
+            panelsDiv = false; // Flags panels div as removed
+        }
     }
 
     options.resize = options.resize || 'auto';
-    if(options.resize === 'auto') { // Add auto-resizing unless resize option is truthy
+    if (options.resize === 'auto') { // Add auto-resizing unless resize option is truthy
         resizer = function() {
-            var parentWidth = container.parentElement.clientWidth,
-                windowHeight = window.innerHeight,
-                portraitRatio = +(options.vertratio || 200) / 100,
+            var windowHeight = window.innerHeight, // Viewport height
+                // Calculated width of parent element
+                parentWidth = parseFloat(getComputedStyle(container.parentElement).width),
                 maxWidth = +(options.maxwidth || -1),
-                minPanelHeight = +(options.minpanelheight || 400),
-                minLandscapeWidth = +(options.minlandwidth || 600),
-                orientation = options.orient || 'auto';
+                orientation = options.orient || 'auto',
 
-                height = windowHeight,
-                width = (maxWidth > 0 && maxWidth < parentWidth) ? maxWidth : parentWidth;
+                portraitRatio = +(options.portratio || 200) / 100,
+                landscapeRatio = +(options.landratio || 200) / 100,
+                minPanelsWidth = +(options.minpanelswidth || 350),
+                minPanelsHeight = +(options.minpanelsheight || 400),
+                minLandscapeWidth = +(options.transwidth || 600),
 
-            if (orientation === 'vert' || width < 600 || width < height) { // Portrait mode
-                container.style['flex-direction'] = 'column';
+                // Initial width parent
+                width = (maxWidth > 0 && maxWidth < parentWidth) ? maxWidth : parentWidth,
+                height; // Initial height is undefined
 
-                boardDiv.style.height = width + 'px';
-                boardDiv.style.width = width + 'px';
-
-                if (panelsDiv) {
-                    // panelsDiv.style.height = ( (height > 400) ? height : 400 ) + 'px';
-                    panelsDiv.style.width = width + 'px';
+            // Determine orientation if 'auto' or 'view'
+            if (orientation !== 'portrait' && orientation !== 'landscape') {
+                if (width < minLandscapeWidth || (orientation === 'view' && width < windowHeight)) {
+                    orientation = 'portrait';
+                } else {
+                    orientation = 'landscape';
                 }
-            } else { // Landscape mode
-                container.style['flex-direction'] = 'row';
-
-                if (panelsDiv) {
-                    // Reduce height if needed to ensure panels are at least 400px wide
-                    height = (width - 400 < height) ? (width - 400) : height;
-
-                    panelsDiv.style.height = height + 'px';
-                    panelsDiv.style.width = (width - height) + 'px';
-                }
-                boardDiv.style.height = height + 'px';
-                boardDiv.style.width = height + 'px';
             }
+
+            if (orientation === 'portrait') { // Portrait mode
+                if (!isNaN(portraitRatio)) {
+                    height = portraitRatio * width;
+                    if (panelsDiv) {
+                        height = (height - width < minPanelsHeight) ? width + minPanelsHeight : height;
+                    }
+                } // Otherwise, leave height undefined
+            } else if (orientation === 'landscape') { // Landscape mode
+                if (!panelsDiv) { // No panels div
+                    height = width; // Square overall
+                } else if (isNaN(landscapeRatio)) {
+                    height = windowHeight;
+                } else { // Otherwise use ratio
+                    height = width / landscapeRatio;
+                }
+
+                if (panelsDiv) {
+                    // Reduce height to ensure minimum width of panels div
+                    height = (width < height + minPanelsWidth) ? (width - minPanelsWidth) : height;
+                }
+            }
+
+            setDimensions(width, height);
             container.style.width = width + 'px';
         };
         window.addEventListener("resize", resizer);
-        resizer(); // Initialize div sizing
+        resizer(); // Initial div sizing
+    } else if (options.resize === 'fixed') {
+        setDimensions(container.clientWidth, container.clientHeight);
     }
 
-    if (options.resize === 'fixed') {
-        width = container.clientWidth;
-        height = container.clientHeight;
-
-        if (width < height) { // Portrait mode
-            container.style['flex-direction'] = 'column';
-            boardDiv.style.height = width + 'px';
-            boardDiv.style.width = width + 'px';
-            if (panelsDiv) {
-                panelsDiv.style.height = (height - width) + 'px';
-                panelsDiv.style.width = width + 'px';
-            }
-        } else { // Landscape mode
+    // Sets dimensions with optional height param
+    function setDimensions(width, height) {
+        if (height && width > height) { // Landscape mode
             container.style['flex-direction'] = 'row';
             boardDiv.style.height = height + 'px';
             boardDiv.style.width = height + 'px';
             if (panelsDiv) {
                 panelsDiv.style.height = height + 'px';
                 panelsDiv.style.width = (width - height) + 'px';
+            }
+        } else { // Portrait mode (implied if height is missing)
+            container.style['flex-direction'] = 'column';
+            boardDiv.style.height = width + 'px';
+            boardDiv.style.width = width + 'px';
+            if (panelsDiv) {
+                if (height) { // Only set height if param present
+                    panelsDiv.style.height = (height - width) + 'px';
+                }
+                panelsDiv.style.width = width + 'px';
             }
         }
     }
@@ -274,6 +297,20 @@ function addKeypressHandler(container, editor) {
         }
     }); // END func() and addEventListener
 } // END function addKeypressHandler
+
+// Sets up mousewheel handling
+function addWheelHandler(boardDiv, editor) {
+    boardDiv.addEventListener('wheel', function(evt) {
+        evt = evt || window.event;
+        if (evt.deltaY > 0) {
+            editor.nextNode(1);
+            evt.preventDefault();
+        } else if (evt.deltaY < 0) {
+            editor.prevNode(1);
+            evt.preventDefault();
+        }
+    });
+}
 
 // Parses SGF string and loads into editor
 function parseAndLoad(text, editor) {

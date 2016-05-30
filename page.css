@@ -1,17 +1,38 @@
 body {
+    background: #876e4b;
+    margin: 15px 0;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    text-align: center;
+}
+
+#contentcolumn {
+    margin: 0 15px;
+    padding: 15px;
     background: #edffe6;
 }
 
+@media (min-width: 600px) {
+    #contentcolumn {
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
 h1, h2, h3 {
-    text-align: center;
     font-weight: normal;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 h1 {
-    font-size: 3em;
+    margin: 0;
+    padding: 0.2em 0 0.7em;
+    font-size: 3.5em;
 }
 
 h2 {
     font-size: 2em;
+}
+
+.besogo-container {
+    margin: 0 auto;
+    text-align: initial;
 }

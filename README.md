@@ -15,16 +15,22 @@ User Notes
 
 BesoGo can be used as a web-based SGF editor, an embeddable SGF viewer, or a board diagram renderer
 
-An example SGF editor (based on the latest release) can be used at <http://yewang.github.io/besogo/>
+#### Online usage
 
-Use <http://yewang.github.io/besogo/testing.html> for an SGF editor based on the latest code snapshot, with experimental themes available at:
-- <http://yewang.github.io/besogo/testing.html?theme=dark>
+SGF editor based on the latest code snapshot at <http://yewang.github.io/besogo/testing.html>
+
+With realistic board rendering <http://yewang.github.io/besogo/testing.html?theme=wood&realstones=on>
+
+Other experimental themes include:
+- <http://yewang.github.io/besogo/testing.html?theme=bold>
 - <http://yewang.github.io/besogo/testing.html?theme=book>
-- <http://yewang.github.io/besogo/testing.html?theme=simple>
+- <http://yewang.github.io/besogo/testing.html?theme=dark>
 
-See experimental realistic board rendering at <http://yewang.github.io/besogo/testing.html?theme=wood&realstones=on>
+SGF editor based on the latest release (lagging behind the latest snapshot) at <http://yewang.github.io/besogo/stable.html>
 
-When entering moves, overwrite, suicide, and basic ko moves are not allowed, but can be enabled by holding down `ctrl` while clicking
+#### Offline usage
+
+Download the source distribution and open `testing.html`
 
 #### Navigation key bindings
 - `left` previous node
@@ -34,6 +40,8 @@ When entering moves, overwrite, suicide, and basic ko moves are not allowed, but
 - `home` jump to first node
 - `end` jump to last node
 - `delete` remove current branch
+
+When entering moves, overwrite, suicide, and basic ko moves are not allowed, but can be enabled by holding down `ctrl` while clicking
 
 BesoGo supports the [SGF standard](http://www.red-bean.com/sgf/) for Go game records.
 BesoGo should always output SGF files that comply with the standard (besides the exceptions listed below).
@@ -58,6 +66,8 @@ All are merely treated as "simple text" (all whitespace converted to spaces), ex
 
 Web Dev Guide
 -------------
+
+See <http://yewang.github.io/besogo/> and <http://yewang.github.io/besogo/fixedSize.html> for some examples of how to embed BesoGo
 
 #### To embed BesoGo editor/viewer in your website
 1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`simple`, `flat`, `book`, `dark`, `wood`, etc.). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
@@ -96,7 +106,7 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
    - `eastcor` corner-relative system using numbers and CJK symbols
 - `panels` plus-separated list of which GUI elements are added in the GUI. The following panels are supported:
    - `control` navigation control buttons
-   - `name` player names, ranks, and captures
+   - `names` player names, ranks, and captures
    - `comment` comments and game info
    - `tool` editing tool selector buttons
    - `tree` game tree visualization
@@ -108,7 +118,21 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
    - `n5b1b1-1z1-1n10` does the same as `20`, but overly verbose and redundant.
    - `b2,3,0,1` navigates following the 2nd child, 3rd child, last child, and first child over four steps.
 - `nokeys` turns off navigation key bindings if set to a truthy value. Otherwise, by default, navigation keys are enabled and the `tabindex` attribute of the container div is set to `0` (to enable keypress focus), if not already set.
-- `resize` (WIP) turns off auto-resizing behavior of the widget if set to a truthy value. Otherwise, by default, the widget will automatically resize and reorient (switching between landscape and portrait mode) based on the width of its parent node and the height of the display window.
+- `nowheel` turns off mousewheel navigation if set to a truthy value. Otherwise, by default, mousewheel navigation is enabled.
+- `resize` sets the resizing behavior of the widget, defaulting to `auto` if not set, with the following options:
+   - `auto` is the default responsive resizing behavior, which depends on the settings of the following companion parameters
+      - `orient` can be set to `landscape`, `portrait`, `auto` or `view`
+         - `portrait` or `landscape` fixes the orientation of the widget as specified
+         - `auto` is the default behavior, which switches from `landscape` to `portrait` if the parent container width is less than `transwidth`
+         - `view` is the same as `auto`, but also switches from `landscape` to `portrait` if the parent container width is less than viewport height
+      - `transwidth` sets the width to transition from `landscape` to `portrait` for `auto` and `view` orientation modes, defaulting 600 pixels if not set
+      - `maxwidth` sets a limit on the maximum width, otherwise the widget will fill the width of the parent container if omitted
+      - `portratio` sets the height-to-width ratio for `portrait` mode, expressed as a percentage. Defaults to 200% if not set. If set to a truthy value that converts to `NaN`, then the GUI panels will have a compact automatic height.
+      - `landratio` sets the width-to-height ratio for `landscape` mode, expressed as a percentage. Defaults to 200% if not set.
+      - `minpanelswidth` sets the smallest width for the GUI panels in `landscape` mode, where the board and widget height would be shrunk to ensure that this minimum is met, defaulting to 350 pixels if not set
+      - `minpanelsheight` sets the smallest height for the GUI panels in `portrait` mode (if height is computed using `portratio`), defaulting to 400 pixels if not set
+   - `fixed`  requires the width and height of the container div to be set, as they will be accordingly
+   - `none` or any other truthy value that is not `auto` or `fixed` disables all resizing
 
 
 Code Doc
@@ -131,6 +155,7 @@ Alternatively, you can manually combine and minify as follows
 - `gameRoot.js` data structure that internally represents the game tree
 - `boardDisplay.js` essential board display GUI panel
 - `controlPanel.js` GUI panel for navigation control buttons
+- `namesPanel.js` GUI panel for player names, ranks, and captures
 - `commentPanel.js` GUI panel for comments and game info
 - `toolPanel.js` GUI panel for tool selector buttons
 - `treePanel.js` GUI panel for game tree visualization

@@ -25,10 +25,11 @@
 
 <body style="padding: 0px; margin: 0px; overflow-x: hidden; overflow-y: scroll">
 <div id="target"></div>
+<p style="text-align: center; margin: 3px"><a href="https://github.com/yewang/besogo">BesoGo is Free Software</a>
 
 <script type="text/javascript">
 (function() {
-    var options = {},
+    var options = { orient: "view", landratio: "none" },
         searchString = location.search.substring(1), // Drop question mark
         params = searchString.split("&"),
         i, value; // Scratch iteration variables
@@ -39,6 +40,9 @@
     }
     if (options.theme) { // Board style theme (overrides std theme if set)
         addStyleLink('css/board-' + options.theme + '.css');
+    }
+    if (options.height && options.width) {
+
     }
 
     besogo.create(document.getElementById('target'), options);
