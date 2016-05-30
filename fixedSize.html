@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BesoGo</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<style>
+body { background: #edffe6; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; }
+h1, h2 { font-weight: normal; }
+</style>
+<link rel="stylesheet" type="text/css" href="css/besogo.css">
+<link rel="stylesheet" type="text/css" href="css/board-flat.css">
+
+<script src="js/besogo.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/gameRoot.js"></script>
+<script src="js/svgUtil.js"></script>
+<script src="js/parseSgf.js"></script>
+<script src="js/loadSgf.js"></script>
+<script src="js/saveSgf.js"></script>
+<script src="js/boardDisplay.js"></script>
+<script src="js/coord.js"></script>
+<script src="js/toolPanel.js"></script>
+<script src="js/filePanel.js"></script>
+<script src="js/controlPanel.js"></script>
+<script src="js/namesPanel.js"></script>
+<script src="js/commentPanel.js"></script>
+<script src="js/treePanel.js"></script>
+
+<body onload="besogo.autoInit()">
+
+<h1>BesoGo Fixed Size Examples</h1>
+
+<h2>Horizontal Editor</h2>
+<div class="besogo-editor" style="height: 525px; width: 960px" resize="fixed"></div>
+
+<h2>Vertical Editor</h2>
+<div class="besogo-editor" style="height: 940px; width: 588px" resize="fixed"></div>
+
+<h2>Minimal Viewer</h2>
+<div class="besogo-viewer" style="height: 625px; width: 552px" resize="fixed" panels="control+names" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
+Game review copyright <a href="https://github.com/gogameguru/commented-go-games">GoGameGuru</a>, licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>
+
+</div>
+</body>
+</html>
