@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" type="text/css" href="page.css">
 <link rel="stylesheet" type="text/css" href="css/besogo.css">
-<link rel="stylesheet" type="text/css" href="css/board-wood.css">
+<link rel="stylesheet" type="text/css" href="css/board-wood.css" id="theme">
 
 <script src="js/besogo.js"></script>
 <script src="js/editor.js"></script>
@@ -24,20 +24,58 @@
 <script src="js/commentPanel.js"></script>
 <script src="js/treePanel.js"></script>
 
+<script type="text/javascript">
+var toggleTheme;
+(function() {
+    var current = 0,
+        themes = "wood flat bold dark book eidogo glift kibitz sensei".split(' '),
+        link = document.getElementById('theme');
+    toggleTheme = function(){
+        current = (current + 1) % themes.length;
+        link.href = "css/board-" + themes[current] + ".css";
+    }
+    return false;
+})();
+</script>
+
 <body onload="besogo.autoInit()">
 <div id="contentcolumn">
 
 <h1>BesoGo</h1>
 
-<div class="besogo-diagram" maxWidth="585" realstones="on" nowheel="true" nokeys="true">
+<div class="besogo-diagram" maxwidth="585" realstones="on" nowheel="true" nokeys="true">
 (;AB[ra][hb][lb][fc][lc][bd][ld][ce][de][fe][le][me][oe][pe][bf][mf][of][og][dh][oh][ph][qh][rh][sh][di][mi][ni][oi][pi][aj][fj][lj][ak][ek][lk][rk][sk][al][el][il][pl][ql][am][bm][em][qm][rm][dn][fn][mn][co][fo][ko][oo][bp][cp][ep][pp][sp][fq][pq][qq][sq][cr][nr][pr][bs][ns][os][ps]
 AW[qa][ib][jb][mb][rb][hc][qc][cd][jd][nd][od][ke][qe][re][df][ff][pf][bg][cg][dg][gg][hg][kg][lg][ng][ah][hi][ki][ri][si][bj][cj][jj][nj][oj][pj][qj][dk][jk][ok][dl][jl][rl][sl][hm][jm][sm][bn][cn][en][jn][on][rn][sn][qo][ro][so][ap][hp][kp][lp][mp][op][qp][eq][rq][ar][ir][mr][or][ms])
 </div>
 
 <div class="links">
-<a href="https://github.com/yewang/besogo">GitHub</a>
-<a href="testing.html?realstones=on&theme=wood">SGF Editor</a>
-<a href="testing.html">Editor (flat)</a>
+<a href="https://github.com/yewang/besogo">Free Code on GitHub</a>
+<a href="testing.html?realstones=on&theme=wood">Editor (realistic theme)</a>
+<a href="testing.html">Editor (flat theme)</a>
+</div>
+
+<h2>Features</h2>
+<ul>
+<li>Web-based <a href="testing.html?realstones=on&theme=wood">SGF editor</a></li>
+<li>Usable offline, cross-platform with no installation (just <a href="https://github.com/yewang/besogo">download the source</a> and open testing.html)</li>
+<li>Embeddable, responsive, and modular</li>
+<li>Editor, viewer, and diagram widgets (see examples below)</li>
+<li>Position editing, custom markup, comment, and game info tools</li>
+<li>Keyboard and mousewheel navigation</li>
+<li>Game tree navigator</li>
+<li>Supports both <a href="http://www.red-bean.com/sgf/user_guide/#variations">"sibling" and "child" variation markup styles</a></li>
+<li>Multiple board coordinate labeling options (toggle with the 四4 button)</li>
+<li>Realistic <a href="https://github.com/jokkebk/jgoboard/blob/master/large/shinkaya.jpg">board</a> and <a href="https://github.com/atarnowsky/go-assets/tree/master/images/stones/style_a/128x128">stone</a> textures (CC-licensed assets from other projects)</li>
+<li>Customizable CSS-based themes (<a href="" onclick="toggleTheme(); return false;">click here to toggle</a>)</li>
+<li>Written in JavaScript, CSS, and HTML5 with no dependencies</li>
+<li><a href="https://github.com/yewang/besogo">Free, open-source software</a> (<a href="http://www.gnu.org/licenses/agpl.html">AGPL license</a>)</li>
+</ul>
+
+<h2>Diagram Example</h2>
+<h4>550px max-width, 9x9 board only, western coordinates, flat stones
+<br><a href="" onclick="toggleTheme(); return false;">Toggle CSS Theme</a></h4>
+<div class="besogo-diagram" maxwidth="550" nowheel="true" nokeys="true" coord="western">
+(;SZ[9]AB[aa][ac][ae][ag][ai][bb][bd][bf][bh][ca][ci][db][dd][df][dh]AW[fb][fd][ff][fh][ga][gi][hb][hd][hf][hh][ia][ic][ie][ig][ii]CR[bb][ec][hb]SQ[db][ea][fb]TR[bd][ge][hd]MA[ce][dd][fd]SL[df][eg][ff]LB[ac:a][ad:b][ae:c][af:d][bf:4][bg:5][bh:6][cf:七][cg:八][ch:九][ci:⚖][dh:♞][ei:⚔][fh:⛄][gf:四][gg:五][gh:六][gi:☯][hf:1][hg:2][hh:3][ic:A][id:B][ie:C][if:D])
 </div>
 
 <h2>Embedded Editor</h2>
@@ -46,12 +84,12 @@ AW[qa][ib][jb][mb][rb][hc][qc][cd][jd][nd][od][ke][qe][re][df][ff][pf][bg][cg][d
 
 <h2>Vertical Viewer</h2>
 <h4>500px max-width, vertical orientation, game tree and comment/info panels included, flat stones</h4>
-<div class="besogo-viewer" orient="portrait" panels="control+names+comment+tree" maxWidth="500" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
+<div class="besogo-viewer" orient="portrait" panels="control+names+comment+tree" maxwidth="500" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
 Game review copyright <a href="https://github.com/gogameguru/commented-go-games">GoGameGuru</a>, licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>
 
 <h2>Minimal Vertical Viewer</h2>
-<h4>600px max-width, vertical orientation, only navigation controls and player names, realistic stones</h4>
-<div class="besogo-viewer" realstones="on" panels="control+names" orient="portrait" portratio="none" maxWidth="600" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
+<h4>650px max-width, vertical orientation, only navigation controls and player names, eastern coordinates, realistic stones</h4>
+<div class="besogo-viewer" coord="eastern" realstones="on" panels="control+names" orient="portrait" portratio="none" maxwidth="650" sgf="https://raw.githubusercontent.com/gogameguru/commented-go-games/master/2016/05/20160309-Lee-Sedol-vs-AlphaGo-Commentary-An-Younggil.sgf"></div>
 Game review copyright <a href="https://github.com/gogameguru/commented-go-games">GoGameGuru</a>, licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>
 
 <h3>Copyright and Credits</h3>

@@ -32,6 +32,7 @@
     var options = { orient: "view", landratio: "none" },
         searchString = location.search.substring(1), // Drop question mark
         params = searchString.split("&"),
+        div = document.getElementById('target'), // Target div
         i, value; // Scratch iteration variables
 
     for (i = 0; i < params.length; i++) {
@@ -41,11 +42,12 @@
     if (options.theme) { // Board style theme (overrides std theme if set)
         addStyleLink('css/board-' + options.theme + '.css');
     }
-    if (options.height && options.width) {
-
+    if (options.height && options.width && options.resize === 'fixed') {
+        div.style.height = options.height + 'px';
+        div.style.width = options.width + 'px';
     }
 
-    besogo.create(document.getElementById('target'), options);
+    besogo.create(div, options);
 
     function addStyleLink(cssURL) {
         var element = document.createElement('link');
