@@ -298,10 +298,18 @@ besogo.makeEditor = function(sizeX, sizeY) {
                 playMove(i, j, 1, ctrlKey); // White move
                 break;
             case 'addB':
-                placeSetup(i, j, -1);
+                if (ctrlKey) {
+                    playMove(i, j, -1, true); // Play black
+                } else {
+                    placeSetup(i, j, -1); // Set black
+                }
                 break;
             case 'addW':
-                placeSetup(i, j, 1);
+                if (ctrlKey) {
+                    playMove(i, j, 1, true); // Play white
+                } else {
+                    placeSetup(i, j, 1); // Set white
+                }
                 break;
             case 'addE':
                 placeSetup(i, j, 0);

@@ -10,22 +10,22 @@ besogo.makeToolPanel = function(container, editor) {
     svg = makeButtonSVG('auto', 'Auto-play/nav'); // Auto-play/nav tool button
     svg.appendChild(makeYinYang(0, 0));
 
-    svg = makeButtonSVG('playB', 'Play black'); // Play black button
-    svg.appendChild(besogo.svgStone(0, 0, -1));
+    // svg = makeButtonSVG('playB', 'Play black'); // Play black button
+    // svg.appendChild(besogo.svgStone(0, 0, -1));
 
-    svg = makeButtonSVG('playW', 'Play white'); // Play white button
-    svg.appendChild(besogo.svgStone(0, 0, 1));
+    // svg = makeButtonSVG('playW', 'Play white'); // Play white button
+    // svg.appendChild(besogo.svgStone(0, 0, 1));
 
-    svg = makeButtonSVG('addB', 'Set black'); // Add black button
+    svg = makeButtonSVG('addB', 'Set black\nctrl+click to play'); // Add black button
     element = besogo.svgEl('g');
     element.appendChild(besogo.svgStone(0, 0, -1)); // Black stone
-    element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
+    // element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
     svg.appendChild(element);
 
-    svg = makeButtonSVG('addW', 'Set white'); // Add white button
+    svg = makeButtonSVG('addW', 'Set white\nctrl+click to play'); // Add white button
     element = besogo.svgEl('g');
     element.appendChild(besogo.svgStone(0, 0, 1)); // White stone
-    element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
+    // element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
     svg.appendChild(element);
 
     svg = makeButtonSVG('addE', 'Set empty'); // Add empty button

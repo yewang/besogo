@@ -5,7 +5,6 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
         EMPTY = 0, // Any falsy (e.g., undefined) value is also empty
 
         root = { // Inherited attributes of root node
-            nextToMove: BLACK,
             blackCaps: 0,
             whiteCaps: 0,
             moveNumber: 0
@@ -23,7 +22,6 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
     }
     initNode(root, null); // Initialize root node with null parent
 
-
     // Plays a move, returns true if successful
     // Set allow to truthy to allow overwrite, suicide and ko
     root.playMove = function(x, y, color, allow) {
@@ -39,7 +37,7 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
         }
 
         if (!color) { // Falsy color indicates auto-color
-            color = this.nextToMove;
+            color = this.nextMove();
         }
 
         if (x < 1 || y < 1 || x > sizeX || y > sizeY) {
@@ -49,7 +47,7 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
                 captures: 0, // Pass never captures
                 overwrite: false // Pass is never an overwrite
             };
-            this.nextToMove = -color; // Update next to move
+            this.lastMove = color; // Store color of last move
             this.moveNumber++; // Increment move number
             return true; // Pass move successful
         }
@@ -109,7 +107,7 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
             captures: captures,
             overwrite: overwrite
         };
-        this.nextToMove = -color; // Update next to move
+        this.lastMove = color; // Store color of last move
         this.moveNumber++; // Increment move number
         return true;
     }; // END func root.playMove
@@ -158,6 +156,23 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
         }
         return false; // Otherwise, no liberties found
     }
+
+    // Get next to move
+    root.nextMove = function() {
+        var x, y, count = 0;
+        if (this.lastMove) { // If a move has been played
+            return -this.lastMove; // Then next is opposite of last move
+        } else { // No moves have been played
+            for (x = 1; x <= sizeX; x++) {
+                for (y = 1; y <= sizeY; y++) {
+                    // Counts up difference between black and white set stones
+                    count += this.getStone(x, y);
+                }
+            }
+            // White's turn if strictly more black stones are set
+            return (count < 0) ? WHITE : BLACK;
+        }
+    };
 
     // Places a setup stone, returns true if successful
     root.placeSetup = function(x, y, color) {
@@ -282,10 +297,10 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
         return { x: sizeX, y: sizeY };
     };
 
-    return root;
-
     // Convert (x, y) coordinates to linear index
     function fromXY(x, y) {
         return (x - 1) * sizeY + (y - 1);
     }
+
+    return root;
 };
