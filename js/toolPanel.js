@@ -78,11 +78,11 @@ besogo.makeToolPanel = function(container, editor) {
         editor.click(0, 0, false); // Clicking off the board signals a pass
     });
 
-    makeButtonText('Up', 'Raise variation', function(){
+    makeButtonText('Raise', 'Raise variation', function(){
         editor.promote();
     });
 
-    makeButtonText('Down', 'Lower variation', function(){
+    makeButtonText('Lower', 'Lower variation', function(){
         editor.demote();
     });
 
