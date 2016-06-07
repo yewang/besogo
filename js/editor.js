@@ -58,6 +58,8 @@ besogo.makeEditor = function(sizeX, sizeY) {
         getCurrent: getCurrent,
         setCurrent: setCurrent,
         cutCurrent: cutCurrent,
+        promote: promote,
+        demote: demote,
         getRoot: getRoot,
         loadRoot: loadRoot // Loads new game state
     };
@@ -277,6 +279,26 @@ besogo.makeEditor = function(sizeX, sizeY) {
                 // Notify navigation and tree edited
                 notifyListeners({ treeChange: true, navChange: true });
             }
+        }
+    }
+
+    // Raises current variation to a higher precedence
+    function promote() {
+        if (tool === 'navOnly') {
+            return; // Tree editing disabled in navOnly mode
+        }
+        if (current.parent && current.parent.promote(current)) {
+            notifyListeners({ treeChange: true }); // Notify tree edited
+        }
+    }
+
+    // Drops current variation to a lower precedence
+    function demote() {
+        if (tool === 'navOnly') {
+            return; // Tree editing disabled in navOnly mode
+        }
+        if (current.parent && current.parent.demote(current)) {
+            notifyListeners({ treeChange: true }); // Notify tree edited
         }
     }
 

@@ -3,9 +3,7 @@ besogo.makeToolPanel = function(container, editor) {
     var element, // Scratch for building SVG images
         svg, // Scratch for building SVG images
         labelText, // Text area for next label input
-        selectors = {}, // Holds selection rects
-        passButton = document.createElement('input'),
-        cutButton = document.createElement('input');
+        selectors = {}; // Holds selection rects
 
     svg = makeButtonSVG('auto', 'Auto-play/navigate\n' +
         'crtl+click to force ko, suicide, overwrite\n' +
@@ -72,25 +70,25 @@ besogo.makeToolPanel = function(container, editor) {
     });
     container.appendChild(labelText);
 
-    passButton.type = 'button';
-    passButton.value = 'Pass';
-    passButton.title = 'Pass move';
-    passButton.onclick = function() {
+    makeButtonText('Pass', 'Pass move', function(){
         var tool = editor.getTool();
         if (tool !== 'navOnly' && tool !== 'auto' && tool !== 'playB' && tool !== 'playW') {
             editor.setTool('auto'); // Ensures that a move tool is selected
         }
         editor.click(0, 0, false); // Clicking off the board signals a pass
-    };
-    container.appendChild(passButton);
+    });
 
-    cutButton.type = 'button';
-    cutButton.value = 'Cut';
-    cutButton.title = 'Remove branch';
-    cutButton.onclick = function() {
+    makeButtonText('Up', 'Raise variation', function(){
+        editor.promote();
+    });
+
+    makeButtonText('Down', 'Lower variation', function(){
+        editor.demote();
+    });
+
+    makeButtonText('Cut', 'Remove branch', function(){
         editor.cutCurrent();
-    };
-    container.appendChild(cutButton);
+    });
 
     editor.addListener(toolStateUpdate); // Set up listener for tool state updates
     toolStateUpdate({ label: editor.getLabel(), tool: editor.getTool() }); // Initialize
@@ -125,6 +123,16 @@ besogo.makeToolPanel = function(container, editor) {
         selectors[tool] = selected;
         svg.appendChild(selected);
         return svg; // Returns reference to the icon container
+    }
+
+    // Creates text button
+    function makeButtonText(text, tip, callback) {
+        var button = document.createElement('input');
+        button.type = 'button';
+        button.value = text;
+        button.title = tip;
+        button.onclick = callback;
+        container.appendChild(button);
     }
 
     // Callback for updating tool state and label

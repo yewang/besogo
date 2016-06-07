@@ -292,6 +292,28 @@ besogo.makeGameRoot = function(sizeX, sizeY) {
         return false;
     };
 
+    // Raises child variation to a higher precedence
+    root.promote = function(child) {
+        var i = this.children.indexOf(child);
+        if (i > 0) { // Child exists and not already first
+            this.children[i] = this.children[i - 1];
+            this.children[i - 1] = child;
+            return true;
+        }
+        return false;
+    };
+
+    // Drops child variation to a lower precedence
+    root.demote = function(child) {
+        var i = this.children.indexOf(child);
+        if (i !== -1 && i < this.children.length - 1) { // Child exists and not already last
+            this.children[i] = this.children[i + 1];
+            this.children[i + 1] = child;
+            return true;
+        }
+        return false;
+    };
+
     // Gets board size
     root.getSize = function() {
         return { x: sizeX, y: sizeY };

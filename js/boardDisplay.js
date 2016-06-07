@@ -80,7 +80,7 @@ besogo.makeBoardDisplay = function(container, editor) {
             redrawStones(current);
             redrawMarkup(current);
             redrawHover(current);
-        } else if (msg.markupChange) {
+        } else if (msg.markupChange || msg.treeChange) {
             redrawMarkup(current);
             redrawHover(current);
         } else if (msg.tool || msg.label) {
