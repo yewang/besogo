@@ -7,7 +7,9 @@ besogo.makeToolPanel = function(container, editor) {
         passButton = document.createElement('input'),
         cutButton = document.createElement('input');
 
-    svg = makeButtonSVG('auto', 'Auto-play/nav'); // Auto-play/nav tool button
+    svg = makeButtonSVG('auto', 'Auto-play/navigate\n' +
+        'crtl+click to force ko, suicide, overwrite\n' +
+        'shift+click to jump to move'); // Auto-play/nav tool button
     svg.appendChild(makeYinYang(0, 0));
 
     // svg = makeButtonSVG('playB', 'Play black'); // Play black button
@@ -28,7 +30,7 @@ besogo.makeToolPanel = function(container, editor) {
     // element.appendChild(besogo.svgPlus(0, 0, besogo.RED)); // Red plus
     svg.appendChild(element);
 
-    svg = makeButtonSVG('addE', 'Set empty'); // Add empty button
+    svg = makeButtonSVG('addE', 'Set empty point'); // Add empty button
     element = besogo.svgEl('g');
     element.appendChild(besogo.svgStone(0, 0)); // Grey stone
     element.appendChild(besogo.svgCross(0, 0, besogo.RED)); // Red cross

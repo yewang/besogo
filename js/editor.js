@@ -338,19 +338,50 @@ besogo.makeEditor = function(sizeX, sizeY) {
         }
     }
 
-    // Navigates to child with move at (x, y), searching tree if shiftKey pressed
+    // Navigates to child with move at (x, y), searching tree if shift key pressed
     // Returns true is successful, false if not
     function navigate(x, y, shiftKey) {
         var i, move,
             children = current.children;
 
-        // Look for move at same location in children
+        // Look for move across children
         for (i = 0; i < children.length; i++) {
             move = children[i].move;
-            if (move && move.x === x && move.y === y) {
+            if (shiftKey) { // Search for move in branch
+                if (jumpToMove(x, y, children[i])) {
+                    return true;
+                }
+            } else if (move && move.x === x && move.y === y) {
                 current = children[i]; // Navigate to child if found
-                // Notify navigation (with no tree edits)
-                notifyListeners({ navChange: true });
+                notifyListeners({ navChange: true }); // Notify navigation (with no tree edits)
+                return true;
+            }
+        }
+
+        if (shiftKey && jumpToMove(x, y, root, current)) {
+            return true;
+        }
+        return false;
+    }
+
+    // Recursive function for jumping to move with depth-first search
+    function jumpToMove(x, y, start, end) {
+        var i, move,
+            children = start.children;
+
+        if (end && end === start) {
+            return false;
+        }
+
+        move = start.move;
+        if (move && move.x === x && move.y === y) {
+            current = start;
+            notifyListeners({ navChange: true }); // Notify navigation (with no tree edits)
+            return true;
+        }
+
+        for (i = 0; i < children.length; i++) {
+            if (jumpToMove(x, y, children[i], end)) {
                 return true;
             }
         }
