@@ -406,7 +406,7 @@ besogo.makeBoardDisplay = function(container, editor) {
             width: CELL_SIZE,
             opacity: 0.85,
             stroke: "none",
-            'class': 'besogo-svg-board'
+            'class': 'besogo-svg-board besogo-svg-backer'
         });
     }
 

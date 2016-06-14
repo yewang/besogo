@@ -3,6 +3,9 @@
 .besogo-svg-board {
     fill: none;
 }
+.besogo-svg-backer {
+    fill: #fcbc5b;
+}
 .besogo-board {
     background: url("../img/shinkaya4.jpg");
     background-size: cover;

@@ -78,7 +78,7 @@ besogo.makeTreePanel = function(container, editor) {
             background = besogo.svgEl("rect", { // Background color for tree
                 height: '100%',
                 width: '100%',
-                'class': 'besogo-svg-board'
+                'class': 'besogo-svg-board besogo-svg-backer'
             }),
             path, // Root path
             width, // Calculated dimensions of the SVG
