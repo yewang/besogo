@@ -145,19 +145,23 @@ besogo.makeBoardDisplay = function(container, editor) {
     // Draws coordinate labels on the board
     function drawCoords(coord) {
         var labels = besogo.coord[coord](sizeX, sizeY),
+            labelXa = labels.x, // Top edge labels
+            labelXb = labels.xb || labels.x, // Bottom edge
+            labelYa = labels.y, // Left edge
+            labelYb = labels.yb || labels.y, // Right edge
             shift = COORD_MARGIN + 10,
             i, x, y; // Scratch iteration variable
 
         for (i = 1; i <= sizeX; i++) { // Draw column coordinate labels
             x = svgPos(i);
-            drawCoordLabel(x, svgPos(1) - shift, labels.x[i]);
-            drawCoordLabel(x, svgPos(sizeY) + shift, labels.x[i]);
+            drawCoordLabel(x, svgPos(1) - shift, labelXa[i]);
+            drawCoordLabel(x, svgPos(sizeY) + shift, labelXb[i]);
         }
 
         for (i = 1; i <= sizeY; i++) { // Draw row coordinate labels
             y = svgPos(i);
-            drawCoordLabel(svgPos(1) - shift, y, labels.y[i]);
-            drawCoordLabel(svgPos(sizeX) + shift, y, labels.y[i]);
+            drawCoordLabel(svgPos(1) - shift, y, labelYa[i]);
+            drawCoordLabel(svgPos(sizeX) + shift, y, labelYb[i]);
         }
 
         function drawCoordLabel(x, y, label) {

@@ -33,6 +33,34 @@ besogo.coord.numeric = function(sizeX, sizeY) {
     return labels;
 };
 
+// Pierre Audouard corner-relative coordinate system
+besogo.coord.pierre = function(sizeX, sizeY) {
+    var labels = { x: [], xb: [], y: [], yb: [] }, i;
+    for (i = 1; i <= sizeX / 2; i++) {
+        labels.x[i] = 'a' + i;
+        labels.x[sizeX - i + 1] = 'b' + i;
+        labels.xb[i] = 'd' + i;
+        labels.xb[sizeX - i + 1] = 'c' + i;
+    }
+    if (sizeX % 2) {
+        i = Math.ceil(sizeX / 2);
+        labels.x[i] = 'a';
+        labels.xb[i] = 'c';
+    }
+    for (i = 1; i <= sizeY / 2; i++) {
+        labels.y[i] = 'a' + i;
+        labels.y[sizeY - i + 1] = 'd' + i;
+        labels.yb[i] = 'b' + i;
+        labels.yb[sizeY - i + 1] = 'c' + i;
+    }
+    if (sizeY % 2) {
+        i = Math.ceil(sizeY / 2);
+        labels.y[i] = 'd';
+        labels.yb[i] = 'b';
+    }
+    return labels;
+};
+
 // Corner-relative, alpha-numeric, coordinate system
 besogo.coord.corner = function(sizeX, sizeY) {
     var labels = { x: [], y: [] }, i;
