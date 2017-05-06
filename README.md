@@ -41,6 +41,8 @@ Download the source distribution and open `testing.html`
 - `end` jump to last node
 - `delete` remove current branch
 
+Shift-clicking with the auto-move/navigate tool will jump to the move that plays at that point
+
 When entering moves, overwrite, suicide, and basic ko moves are not allowed, but can be enabled by holding down `ctrl` while clicking
 
 BesoGo supports the [SGF standard](http://www.red-bean.com/sgf/) for Go game records.
