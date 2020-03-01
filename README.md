@@ -5,7 +5,7 @@ Embeddable SGF player for the game of Go (aka Weiqi, Baduk)
 
 Written in JavaScript, CSS, and HTML5, with no dependencies on other libraries
 
-Free software released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html).
+Free software released under the MIT License.
 Some bundled assets are copyright by other authors and available under [Creative Commons](http://creativecommons.org) licensing terms.
 See "Copying and License" section for further details.
 
