@@ -1,0 +1,21 @@
+{
+  "name": "besogo",
+  "version": "0.0.2-alpha",
+  "description": "Embeddable SGF player for the game of Go (aka Weiqi, Baduk)",
+  "main": "besogo.all.js",
+  "scripts": {
+    "build": "./build.sh",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yewang/besogo.git"
+  },
+  "keywords": ["go", "weiqi", "baduk", "sgf"],
+  "author": "yewang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yewang/besogo/issues"
+  },
+  "homepage": "http://yewang.github.io/besogo/"
+}
