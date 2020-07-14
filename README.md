@@ -6,7 +6,7 @@ Embeddable SGF player for the game of Go (aka Weiqi, Baduk)
 Written in JavaScript, CSS, and HTML5, with no dependencies on other libraries
 
 Free software released under the MIT License.
-Some bundled assets are copyright by other authors and available under [Creative Commons](http://creativecommons.org) licensing terms.
+Some bundled assets are copyright by other authors and available under [Creative Commons](https://creativecommons.org) licensing terms.
 See "Copying and License" section for further details.
 
 
@@ -17,16 +17,16 @@ BesoGo can be used as a web-based SGF editor, an embeddable SGF viewer, or a boa
 
 #### Online usage
 
-SGF editor based on the latest code snapshot at <http://yewang.github.io/besogo/testing.html>
+SGF editor based on the latest code snapshot at <https://yewang.github.io/besogo/testing.html>
 
-With realistic board rendering <http://yewang.github.io/besogo/testing.html?theme=wood&realstones=on>
+With realistic board rendering <https://yewang.github.io/besogo/testing.html?theme=wood&realstones=on>
 
 Other experimental themes include:
-- <http://yewang.github.io/besogo/testing.html?theme=bold>
-- <http://yewang.github.io/besogo/testing.html?theme=book>
-- <http://yewang.github.io/besogo/testing.html?theme=dark>
+- <https://yewang.github.io/besogo/testing.html?theme=bold>
+- <https://yewang.github.io/besogo/testing.html?theme=book>
+- <https://yewang.github.io/besogo/testing.html?theme=dark>
 
-SGF editor based on the latest release (lagging behind the latest snapshot) at <http://yewang.github.io/besogo/stable.html>
+SGF editor based on the latest release (lagging behind the latest snapshot) at <https://yewang.github.io/besogo/stable.html>
 
 #### Offline usage
 
@@ -45,7 +45,7 @@ Shift-clicking with the auto-move/navigate tool will jump to the move that plays
 
 When entering moves, overwrite, suicide, and basic ko moves are not allowed, but can be enabled by holding down `ctrl` while clicking
 
-BesoGo supports the [SGF standard](http://www.red-bean.com/sgf/) for Go game records.
+BesoGo supports the [SGF standard](https://www.red-bean.com/sgf/) for Go game records.
 BesoGo should always output SGF files that comply with the standard (besides the exceptions listed below).
 BesoGo permissively imports SGF file input, allowing many common SGF syntax errors,
 while attempting to fix any issues and converting to valid SGF on output.
@@ -69,7 +69,7 @@ All are merely treated as "simple text" (all whitespace converted to spaces), ex
 Web Dev Guide
 -------------
 
-See <http://yewang.github.io/besogo/> and <http://yewang.github.io/besogo/fixedSize.html> for some examples of how to embed BesoGo
+See <https://yewang.github.io/besogo/> and <https://yewang.github.io/besogo/fixedSize.html> for some examples of how to embed BesoGo
 
 #### To embed BesoGo editor/viewer in your website
 1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`simple`, `flat`, `book`, `dark`, `wood`, etc.). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
@@ -246,11 +246,11 @@ SOFTWARE.
 
 The contents of the `img/` directory are copyright by other authors and available under the license terms specified below
 
-The following images are from the [go-assets](https://github.com/atarnowsky/go-assets) repository, available under a [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) license.
+The following images are from the [go-assets](https://github.com/atarnowsky/go-assets) repository, available under a [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) license.
 Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>
 - 4 black stone images `img/black0.png` ... `img/black3.png`
 - 11 white stone images `img/white0.png` ... `img/white10.png`
 
-The following images are from (or derived from) the [jgoboard](https://github.com/jokkebk/jgoboard) repository, available under a [Creative Commons Attribution-NonCommercial 4.0 International](http://creativecommons.org/licenses/by-nc/4.0/) license.
+The following images are from (or derived from) the [jgoboard](https://github.com/jokkebk/jgoboard) repository, available under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) license.
 Copyright (C) 2013 Joonas Pihlajamaa <github@joonaspihlajamaa.com>
 - `img/shinkaya1.jpg` and its derivatives `img/shinkaya2.jpg` ... `img/shinkaya4.jpg`
