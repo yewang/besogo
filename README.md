@@ -35,6 +35,7 @@ Download the source distribution and open `testing.html`
 #### Navigation key bindings
 - `left` previous node
 - `right` next node
+- `shift+left` previous branching node
 - `page up` jump back 10 nodes
 - `page down` jump forward 10 nodes
 - `home` jump to first node

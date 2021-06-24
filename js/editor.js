@@ -41,6 +41,7 @@ besogo.makeEditor = function(sizeX, sizeY) {
         nextNode: nextNode,
         prevNode: prevNode,
         nextSibling: nextSibling,
+        prevBranchPoint: prevBranchPoint,
         toggleCoordStyle: toggleCoordStyle,
         getCoordStyle: getCoordStyle,
         setCoordStyle: setCoordStyle,
@@ -255,6 +256,28 @@ besogo.makeEditor = function(sizeX, sizeY) {
             // Notify listeners of navigation (with no tree edits)
             notifyListeners({ navChange: true });
         }
+    }
+
+    // Return to the previous branch point
+    function prevBranchPoint(change) {
+        if ( current.parent === null ) { // Check if root
+          return false; // Do nothing if already at root
+        }
+
+        navHistory.push(current); // Save starting position in case we do not find a branch point
+
+        while ( current.parent && current.parent.children.length === 1 ) { // Traverse backwards until we find a sibling
+            current = current.parent;
+        }
+
+        if ( current.parent ) {
+            current = current.parent;
+            notifyListeners({ navChange: true });
+        } else {
+            current = navHistory.pop(current);
+            return false;
+        }
+
     }
 
     // Sets the current node

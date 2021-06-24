@@ -277,7 +277,11 @@ function addKeypressHandler(container, editor) {
                 editor.prevNode(-1);
                 break;
             case 37: // left
-                editor.prevNode(1);
+                if ( evt.shiftKey ) {
+                    editor.prevBranchPoint();
+                } else {
+                    editor.prevNode(1);
+                }
                 break;
             case 38: // up
                 editor.nextSibling(-1);
