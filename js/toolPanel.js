@@ -117,7 +117,11 @@ besogo.makeToolPanel = function(container, editor) {
         container.appendChild(button);
         button.appendChild(svg);
         button.onclick = function() {
-            editor.setTool(tool);
+            if (tool === 'auto' && editor.getTool() === 'auto') {
+                editor.setTool('navOnly');
+            } else {
+                editor.setTool(tool);
+            }
         };
         button.title = tooltip;
         selectors[tool] = selected;
