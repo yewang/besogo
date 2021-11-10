@@ -185,6 +185,7 @@ Alternatively, you can manually combine and minify as follows
 These images are used for realistic board and stone rendering
 - `black0.png` ... `black3.png` black stone slate textures
 - `white0.png` ... `white10.png` white stone shell textures 
+- `wood.jpg` and `wood-light.jpg` wood board textures
 - `shinkaya1.jpg` ... `shinkaya4.jpg` shinkaya board textures
 
 
@@ -255,3 +256,6 @@ Copyright (C) 2016 Andreas Tarnowsky <andreas.tarnowsky@googlemail.com>
 The following images are from (or derived from) the [jgoboard](https://github.com/jokkebk/jgoboard) repository, available under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/) license.
 Copyright (C) 2013 Joonas Pihlajamaa <github@joonaspihlajamaa.com>
 - `img/shinkaya1.jpg` and its derivatives `img/shinkaya2.jpg` ... `img/shinkaya4.jpg`
+
+The following images are courtesy of tozgrec (OGS user).
+-  `img/wood.jpg` and `img/wood-light.jpg`
