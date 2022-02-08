@@ -13,6 +13,7 @@
     width: 30px;
     padding: 0px;
     background: #d8dcd6;
+    border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
 }
 
 .besogo-container input {
@@ -21,6 +22,7 @@
 
 .besogo-container input[type='button'] {
     background: #d8dcd6;
+    border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
 }
 
 .besogo-container input[type='text'] {
