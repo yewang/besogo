@@ -172,6 +172,7 @@ Alternatively, you can manually combine and minify as follows
 
 #### CSS files in `css/` folder
 - `besogo.css` defines GUI layout and main rendering options
+- `besogo-fill.css` defines style for filling entire window, used by testing.html
 - `board-flat.css` default flat board theme
 - `board-bold.css` bold board theme
 - `board-book.css` book (black and white) board theme
@@ -181,7 +182,6 @@ Alternatively, you can manually combine and minify as follows
 - `board-glift.css` board theme mimicking Glift
 - `board-kibitz.css` board theme mimicking GoKibitz
 - `board-sensei.css` board theme mimicking Sensei's Library
-- `fill.css` defines style for filling entire window, used by testing.html
 
 #### Graphical assets in `img/` folder
 These images are used for realistic board and stone rendering
