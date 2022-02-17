@@ -152,6 +152,42 @@ besogo.create = function(container, options) {
         resizer(); // Initial div sizing
     } else if (options.resize === 'fixed') {
         setDimensions(container.clientWidth, container.clientHeight);
+    } else if (options.resize === 'fill') {
+        resizer = function() {
+            var // height = window.innerHeight, // Viewport height
+                height = parseFloat(getComputedStyle(container.parentElement).height),
+                // Calculated width of parent element
+                width = parseFloat(getComputedStyle(container.parentElement).width),
+
+                minPanelsWidth = +(options.minpanelswidth || 350),
+                minPanelsHeight = +(options.minpanelsheight || 300),
+
+                // Calculated dimensions for the panels div
+                panelsWidth = 0, // Will be set if needed
+                panelsHeight = 0;
+
+            if (width >= height) { // Landscape mode
+                container.style['flex-direction'] = 'row';
+                if (panelsDiv) {
+                    panelsWidth = (width - height >= minPanelsWidth) ? (width - height) : minPanelsWidth;
+                }
+                panelsDiv.style.height = height + 'px';
+                panelsDiv.style.width = panelsWidth + 'px';
+                boardDiv.style.height = height + 'px';
+                boardDiv.style.width = (width - panelsWidth) + 'px';
+            } else { // Portrait mode
+                container.style['flex-direction'] = 'column';
+                if (panelsDiv) {
+                    panelsHeight = (height - width >= minPanelsHeight) ? (height - width) : minPanelsHeight;
+                }
+                panelsDiv.style.height = panelsHeight + 'px';
+                panelsDiv.style.width = width + 'px';
+                boardDiv.style.height = (height - panelsHeight) + 'px';
+                boardDiv.style.width = width + 'px';
+            }
+        };
+        window.addEventListener("resize", resizer);
+        resizer(); // Initial div sizing
     }
 
     // Sets dimensions with optional height param

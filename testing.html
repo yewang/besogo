@@ -5,6 +5,7 @@
 <title>BesoGo</title>
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" type="text/css" href="css/besogo.css">
+<link rel="stylesheet" type="text/css" href="css/fill.css">
 <link rel="stylesheet" type="text/css" href="css/board-flat.css">
 
 <script src="js/besogo.js"></script>
@@ -23,13 +24,12 @@
 <script src="js/commentPanel.js"></script>
 <script src="js/treePanel.js"></script>
 
-<body style="padding: 0px; margin: 0px; overflow-x: hidden; overflow-y: scroll">
+<body>
 <div id="target"></div>
-<p style="text-align: center; margin: 3px"><a href="https://github.com/yewang/besogo">BesoGo is Free Software</a>
 
 <script type="text/javascript">
 (function() {
-    var options = { orient: "view", landratio: "none" },
+    var options = { resize: "fill" },
         searchString = location.search.substring(1), // Drop question mark
         params = searchString.split("&"),
         div = document.getElementById('target'), // Target div

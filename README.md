@@ -70,7 +70,7 @@ All are merely treated as "simple text" (all whitespace converted to spaces), ex
 Web Dev Guide
 -------------
 
-See <https://yewang.github.io/besogo/> and <https://yewang.github.io/besogo/fixedSize.html> for some examples of how to embed BesoGo
+See <https://yewang.github.io/besogo/> and <https://yewang.github.io/besogo/fixedSize.html> for some examples of how to embed BesoGo. See <https://yewang.github.io/besogo/testing.html> for an example full window interface for the editor.
 
 #### To embed BesoGo editor/viewer in your website
 1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`simple`, `flat`, `book`, `dark`, `wood`, etc.). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
@@ -134,7 +134,8 @@ Square sizes can be specified by a single number (e.g., "19", "13") and rectangu
       - `landratio` sets the width-to-height ratio for `landscape` mode, expressed as a percentage. Defaults to 200% if not set.
       - `minpanelswidth` sets the smallest width for the GUI panels in `landscape` mode, where the board and widget height would be shrunk to ensure that this minimum is met, defaulting to 350 pixels if not set
       - `minpanelsheight` sets the smallest height for the GUI panels in `portrait` mode (if height is computed using `portratio`), defaulting to 400 pixels if not set
-   - `fixed`  requires the width and height of the container div to be set, as they will be accordingly
+   - `fill` is another responsive resizing behavior designed for filling and only using the entire window. It toggles between portrait and landscape modes automatically depending on the aspect ratio. It also makes use of the `minpanelswidth` and `minpanelsheight` to ensure that the panels are visible if needed and the aspect ratio is too squarish.
+   - `fixed` requires the width and height of the container div to be set, as they will be accordingly
    - `none` or any other truthy value that is not `auto` or `fixed` disables all resizing
 
 
@@ -170,21 +171,22 @@ Alternatively, you can manually combine and minify as follows
 - `saveSgf.js` composes SGF file from game tree data structure
 
 #### CSS files in `css/` folder
-- `besoso.css` defines GUI layout and main rendering options
-- `besogo-flat.css` default flat board theme
-- `besogo-bold.css` bold board theme
-- `besogo-book.css` book (black and white) board theme 
-- `besogo-dark.css` dark (night mode) board theme
-- `besogo-wood.css` wood grain board theme
-- `besogo-eidogo.css` board theme mimicking EidoGo
-- `besogo-glift.css` board theme mimicking Glift
-- `besogo-kibitz.css` board theme mimicking GoKibitz
-- `besogo-sensei.css` board theme mimicking Sensei's Library
+- `besogo.css` defines GUI layout and main rendering options
+- `board-flat.css` default flat board theme
+- `board-bold.css` bold board theme
+- `board-book.css` book (black and white) board theme
+- `board-dark.css` dark (night mode) board theme
+- `board-wood.css` wood grain board theme
+- `board-eidogo.css` board theme mimicking EidoGo
+- `board-glift.css` board theme mimicking Glift
+- `board-kibitz.css` board theme mimicking GoKibitz
+- `board-sensei.css` board theme mimicking Sensei's Library
+- `fill.css` defines style for filling entire window, used by testing.html
 
 #### Graphical assets in `img/` folder
 These images are used for realistic board and stone rendering
 - `black0.png` ... `black3.png` black stone slate textures
-- `white0.png` ... `white10.png` white stone shell textures 
+- `white0.png` ... `white10.png` white stone shell textures
 - `wood.jpg` and `wood-light.jpg` wood board textures
 - `shinkaya1.jpg` ... `shinkaya4.jpg` shinkaya board textures
 

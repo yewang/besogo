@@ -1,0 +1,21 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+@-moz-document url-prefix() {
+    body, html {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.besogo-container {
+    height: 100%;
+    width: 100%;
+}
+
