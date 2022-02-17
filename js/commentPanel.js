@@ -113,7 +113,7 @@ besogo.makeCommentPanel = function(container, editor) {
         container.replaceChild(table, gameInfoTable);
         gameInfoTable = table;
     }
-    
+
     function updateGameInfoEdit(gameInfo) {
         var table = document.createElement('table'),
             infoTableOrder = playerInfoOrder.concat(infoOrder),
@@ -124,7 +124,7 @@ besogo.makeCommentPanel = function(container, editor) {
             id = infoTableOrder[i];
             row = document.createElement('tr');
             table.appendChild(row);
-            
+
             cell = document.createElement('td');
             cell.appendChild(document.createTextNode(infoIds[id]));
             row.appendChild(cell);

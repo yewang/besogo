@@ -125,7 +125,7 @@ function numberToLetter(number) {
 function numberToCJK(number) {
     var label = '',
         cjk = '一二三四五六七八九';
-    
+
     if (number >= 20) { // 20 and larger
         label = cjk.charAt(number / 10 - 1) + '十';
     } else if (number >= 10) { // 10 through 19

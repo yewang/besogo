@@ -523,7 +523,7 @@ besogo.makeEditor = function(sizeX, sizeY) {
     //  Data sent to listeners:
     //    tool: changed tool selection
     //    label: changed next label
-    //    coord: changed coordinate system 
+    //    coord: changed coordinate system
     //    variantStyle: changed variant style
     //    gameInfo: changed game info
     //    comment: changed comment in current node
