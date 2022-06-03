@@ -1,7 +1,7 @@
 .besogo-container {
     outline: none;
     display: flex;
-    background: #d0fefe;
+    background: #eeeeee;
 }
 
 .besogo-container * {
@@ -12,8 +12,13 @@
     height: 30px;
     width: 30px;
     padding: 0px;
-    background: #d8dcd6;
+    background: #dddddd;
     border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
+    cursor: pointer;
+}
+
+.besogo-container button:hover {
+    background: #e7e7e7;
 }
 
 .besogo-container input {
@@ -21,8 +26,18 @@
 }
 
 .besogo-container input[type='button'] {
-    background: #d8dcd6;
+    height: 30px;
+    min-width: 30px;
+    font-family: Tahoma, Geneva, sans-serif;
+    background: #dddddd;
     border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.besogo-container input[type='button']:hover {
+    background: #e7e7e7;
 }
 
 .besogo-container input[type='text'] {
@@ -54,7 +69,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
-
     flex: 0 0 auto;
 }
 
@@ -97,8 +111,6 @@
     font-family: Georgia, serif;
     font-size: 12pt;
     white-space: pre-wrap;
-
-
     overflow: auto;
     flex: 1 1 60%;
     width: 100%;
@@ -129,7 +141,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
-
     flex: 0 0 auto;
 }
 
