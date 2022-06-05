@@ -28,7 +28,7 @@
 .besogo-container input[type='button'] {
     height: 30px;
     min-width: 30px;
-    font-family: Tahoma, Geneva, sans-serif;
+    font-family: Tahoma, Geneva, 'Noto Sans', sans-serif;
     background: #dddddd;
     border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
     cursor: pointer;
@@ -79,7 +79,7 @@
 
 .besogo-playerInfo {
     display: flex;
-    font-family: Tahoma, Geneva, sans-serif;
+    font-family: Tahoma, Geneva, 'Noto Sans', sans-serif;
     white-space: pre-wrap;
 }
 
@@ -108,7 +108,7 @@
 }
 
 .besogo-comment {
-    font-family: Georgia, serif;
+    font-family: Georgia, 'Noto Serif', serif;
     font-size: 12pt;
     white-space: pre-wrap;
     overflow: auto;
