@@ -1,34 +1,34 @@
 /* Bold board theme */
 
 .besogo-svg-board {
-    fill: #dcb35c;
+    fill: #dcb771;
 }
 
 .besogo-svg-lines {
-    stroke: black;
-    stroke-width: 3.5;
+    stroke: #000000;
+    stroke-width: 4.5;
     fill: none;
 }
 
 .besogo-svg-hoshi {
-    stroke: black;
-    stroke-width: 14;
+    stroke: #000000;
+    stroke-width: 18;
 }
 
 .besogo-svg-blackStone {
-    fill: black;
-    stroke: black;
-    stroke-width: 4;
+    fill: #000000;
+    stroke: #000000;
+    stroke-width: 5;
 }
 
 .besogo-svg-whiteStone {
-    fill: white;
-    stroke: white;
-    stroke-width: 4;
+    fill: #ffffff;
+    stroke: #000000;
+    stroke-width: 5;
 }
 
 .besogo-svg-greyStone {
-    fill: #929591;
-    stroke: #929591;
-    stroke-width: 4;
+    fill: #808080;
+    stroke: #808080;
+    stroke-width: 5;
 }
