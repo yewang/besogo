@@ -1,23 +1,23 @@
 /* Dark board theme */
 
 .besogo-svg-board {
-    fill: #dcb771;
+    fill: #000000;
 }
 
 .besogo-svg-lines {
-    stroke: #000000;
+    stroke: #ffffff;
     stroke-width: 1.5;
     fill: none;
 }
 
 .besogo-svg-hoshi {
-    stroke: #000000;
+    stroke: #ffffff;
     stroke-width: 12;
 }
 
 .besogo-svg-blackStone {
     fill: #000000;
-    stroke: #000000;
+    stroke: #ffffff;
     stroke-width: 2;
 }
 
@@ -31,39 +31,4 @@
     fill: #808080;
     stroke: #808080;
     stroke-width: 2;
-}
-
-/* Overriding standard GUI theme */
-.besogo-container {
-    color: #dddddd;
-    background: #202020;
-}
-
-.besogo-blackInfo {
-    color: #dddddd;
-    background: #000000;
-}
-
-.besogo-whiteInfo {
-    color: #000000;
-    background: #dddddd;
-}
-
-.besogo-container button {
-    background: #373737;
-    border-color: #808080 #000000 #000000 #808080;
-}
-
-.besogo-container button:hover {
-    background: #4d4d4d;
-}
-
-.besogo-container input[type='button'] {
-    background: #373737;
-    color: #dddddd;
-    border-color: #808080 #000000 #000000 #808080;
-}
-
-.besogo-container input[type='button']:hover {
-    background: #4d4d4d;
 }
