@@ -73,7 +73,7 @@ Web Dev Guide
 See <https://yewang.github.io/besogo/> and <https://yewang.github.io/besogo/fixedSize.html> for some examples of how to embed BesoGo. See <https://yewang.github.io/besogo/testing.html> for an example full window interface for the editor.
 
 #### To embed BesoGo editor/viewer in your website
-1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`simple`, `flat`, `book`, `dark`, `wood`, etc.). These sheets provide essential rendering parameters and can be modified to customize the layout and style.
+1. Link the style sheet `css/besogo.css` and one of the `css/board-*.css` sheets, which select different board themes (`flat`, `book`, `dark`, `wood`, etc.). For dark GUI `css/gui-dark.css`. These sheets provide essential rendering parameters and can be modified to customize the layout and style.
 2. Include the combined and minified javascript file `besogo-all-min.js`.
 3. Add divs with the class `besogo-editor`, `besogo-viewer`, or `besogo-diagram`, e.g.,
    ```
@@ -173,6 +173,7 @@ Alternatively, you can manually combine and minify as follows
 #### CSS files in `css/` folder
 - `besogo.css` defines GUI layout and main rendering options
 - `besogo-fill.css` defines style for filling entire window, used by testing.html
+- `gui-dark.css` dark (night mode) GUI theme
 - `board-flat.css` default flat board theme
 - `board-bold.css` bold board theme
 - `board-book.css` book (black and white) board theme
