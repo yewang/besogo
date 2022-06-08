@@ -1,50 +1,69 @@
 /* Dark board theme */
 
 .besogo-svg-board {
-    fill: #3c4142;
+    fill: #dcb771;
 }
 
 .besogo-svg-lines {
-    stroke: black;
-    stroke-width: 3.5;
+    stroke: #000000;
+    stroke-width: 1.5;
     fill: none;
 }
 
 .besogo-svg-hoshi {
-    stroke: black;
-    stroke-width: 14;
+    stroke: #000000;
+    stroke-width: 12;
 }
 
 .besogo-svg-blackStone {
-    fill: black;
-    stroke: black;
-    stroke-width: 4;
+    fill: #000000;
+    stroke: #000000;
+    stroke-width: 2;
 }
 
 .besogo-svg-whiteStone {
-    fill: #929591;
-    stroke: #929591;
-    stroke-width: 4;
+    fill: #ffffff;
+    stroke: #ffffff;
+    stroke-width: 2;
 }
 
 .besogo-svg-greyStone {
-    fill: #536267;
-    stroke: #536267;
-    stroke-width: 4;
+    fill: #808080;
+    stroke: #808080;
+    stroke-width: 2;
 }
 
 /* Overriding standard GUI theme */
 .besogo-container {
-    color: #929591;
-    background: #1b2431;
+    color: #dddddd;
+    background: #202020;
 }
 
 .besogo-blackInfo {
-    color: #929591;
-    background: black;
+    color: #dddddd;
+    background: #000000;
 }
 
 .besogo-whiteInfo {
-    color: black;
-    background: #929591;
+    color: #000000;
+    background: #dddddd;
+}
+
+.besogo-container button {
+    background: #373737;
+    border-color: #808080 #000000 #000000 #808080;
+}
+
+.besogo-container button:hover {
+    background: #4d4d4d;
+}
+
+.besogo-container input[type='button'] {
+    background: #373737;
+    color: #dddddd;
+    border-color: #808080 #000000 #000000 #808080;
+}
+
+.besogo-container input[type='button']:hover {
+    background: #4d4d4d;
 }
