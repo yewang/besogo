@@ -22,6 +22,11 @@
     background: #4d4d4d;
 }
 
+.besogo-container input {
+    color: #dddddd;
+    background: #202020;
+}
+
 .besogo-container input[type='button'] {
     background: #373737;
     color: #dddddd;
@@ -30,4 +35,13 @@
 
 .besogo-container input[type='button']:hover {
     background: #4d4d4d;
+}
+
+.besogo-comment textarea {
+    color: #dddddd;
+    background: #202020;
+}
+
+.besogo-gameInfo td, tr {
+    border: 1px solid #dddddd;
 }
