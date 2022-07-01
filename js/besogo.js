@@ -55,10 +55,22 @@ besogo.create = function(container, options) {
         addKeypressHandler(container, editor);
     }
 
-    if (options.sgf) { // Load SGF file from URL
+    if (options.sgf) { // Load SGF file from URL or SGF string
+        let validURL = false;
         try {
-            fetchParseLoad(options.sgf, editor, options.path);
+            new URL(options.sgf);
+            validURL = true;
+        } catch (e) {}
+
+        try {
+            if (validURL) {
+                fetchParseLoad(options.sgf, editor, options.path);
+            } else {
+                parseAndLoad(options.sgf, editor);
+                navigatePath(editor, options.path);
+            }
         } catch(e) {
+            console.error(e);
             // Silently fail on network error
         }
     } else if (insideText.match(/\s*\(\s*;/)) { // Text content looks like an SGF file
