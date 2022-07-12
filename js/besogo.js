@@ -42,6 +42,7 @@ besogo.create = function(container, options) {
 
     // Make the core editor object
     editor = besogo.makeEditor(options.size.x, options.size.y);
+    container.besogoEditor = editor;
     editor.setTool(options.tool);
     editor.setCoordStyle(options.coord);
     if (options.realstones) { // Using realistic stones
