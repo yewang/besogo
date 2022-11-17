@@ -35,6 +35,13 @@ besogo.loadSgf = function(sgf, editor) {
             move;
 
         switch(prop.id) {
+            case 'PL': // Next to play
+                if (prop.values[0] == "B") {
+                    node.lastMove = 1
+                } else if (prop.values[0] == "W") {
+                    node.lastMove = -1
+                }
+                break;
             case 'B': // Play a black move
                 move = lettersToCoords(prop.values[0]);
                 node.playMove(move.x, move.y, -1, true);

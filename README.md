@@ -55,7 +55,7 @@ while attempting to fix any issues and converting to valid SGF on output.
 - Some properties are unsupported and ignored:
    - Time left `OB`, `OW`, `BL`, `WL`
    - Move annotations `BM`, `DO`, `IT`, `TE`
-   - Control annotations `KO`, `MN`, `PL`
+   - Control annotations `KO`, `MN`
    - Some general annotations `DM`, `GB`, `GW`, `HO`, `N `, `UC`, `V `
    - Some markup `AR`, `LN`, `TB`, `TW`, `DD`, `FG`, `PM`, `VW`
 - No special validation is performed on game info properties:

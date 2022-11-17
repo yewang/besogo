@@ -8,6 +8,7 @@ besogo.makeCommentPanel = function(container, editor) {
         playerInfoOrder = 'PW WR WT PB BR BT'.split(' '),
         infoOrder = 'HA KM RU TM OT GN EV PC RO DT RE ON GC AN US SO CP'.split(' '),
         infoIds = {
+            PL: 'Next move',
             PW: 'White Player',
             WR: 'White Rank',
             WT: 'White Team',
