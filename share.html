@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BesoGo</title>
+
+<link rel="icon" type="image/png" href="icon32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="icon152.png" sizes="152x152">
+<link rel="icon" type="image/png" href="icon192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="icon512.png" sizes="512x512">
+<link rel="apple-touch-icon-precomposed" href="icon152.png" sizes="152x152">
+<link rel="apple-touch-icon-precomposed" href="icon192.png" sizes="192x192">
+<link rel="icon" href="icon.svg" sizes="any" type="image/svg+xml">
+<link rel="manifest" href="manifest.json" />
+<meta name="description" content="BesoGo: a web-based SGF Editor">
+<meta property="og:url" content="https://yewang.github.io/besogo/testing.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BesoGo">
+<meta property="og:description" content="BesoGo: a web-based SGF Editor">
+<meta property="og:image" content="https://yewang.github.io/besogo/icon512.png">
+
+<link rel="stylesheet" type="text/css" href="css/besogo.css">
+<link rel="stylesheet" type="text/css" href="css/besogo-fill.css">
+<link rel="stylesheet" type="text/css" href="css/board-flat.css">
+
+<script src="js/besogo.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/gameRoot.js"></script>
+<script src="js/svgUtil.js"></script>
+<script src="js/parseSgf.js"></script>
+<script src="js/loadSgf.js"></script>
+<script src="js/saveSgf.js"></script>
+<script src="js/boardDisplay.js"></script>
+<script src="js/coord.js"></script>
+<script src="js/toolPanel.js"></script>
+<script src="js/filePanel.js"></script>
+<script src="js/controlPanel.js"></script>
+<script src="js/namesPanel.js"></script>
+<script src="js/commentPanel.js"></script>
+<script src="js/treePanel.js"></script>
+
+</head>
+<body>
+<div id="target"></div>
+
+<script type="text/javascript">
+(function() {
+    const options = { resize: "fill" },
+        div = document.getElementById('target'),
+        params = new URLSearchParams(window.location.search);
+    
+    let writePanels = false;
+    let sgf = "";
+    if (params.has("sgfr")) {
+        sgf = params.get("sgfr")
+        writePanels = false;
+    } else if (params.has("sgfrw")) {
+        sgf = params.get("sgfrw")
+        writePanels = true;
+    } else {
+        sgf = params.get("sgf");
+        writePanels = true;
+    }
+
+    if (!sgf) {
+        alert("Missing sgf query param");
+        return;
+    }
+
+    if (!sgf.replace(/[\s\n]+/g, "").trim().startsWith("(;")) {
+        sgf = sgf.replace("(", "(;");
+    }
+
+    if (!writePanels) {
+        options.panels = ['control', /*'names',*/ 'comment', /*'tool',*/ 'tree', /*'file'*/];
+    }
+
+    options.sgf = sgf.trim();
+    options.hideVariants = true;
+    console.log(sgf)
+
+    besogo.create(div, options);
+
+    function addStyleLink(cssURL) {
+        var element = document.createElement('link');
+        element.href = cssURL;
+        element.type = 'text/css';
+        element.rel = 'stylesheet';
+        document.head.appendChild(element);
+    }
+})();
+</script>
+
+</body>
+
+</html>
