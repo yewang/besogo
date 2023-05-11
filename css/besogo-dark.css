@@ -1,0 +1,58 @@
+﻿@media (prefers-color-scheme: dark) {
+
+.besogo-container {
+    color: #ddd;
+    background: #2c2c2c;
+}
+
+.besogo-blackInfo {
+    color: #ddd;
+}
+
+.besogo-whiteInfo {
+    background: #ddd;
+}
+
+.besogo-container button {
+    background: #3a3a3a;
+    border-color: #5a5a5a #000 #000 #5a5a5a;
+}
+
+.besogo-container button:hover {
+    background: #4b4b4b;
+}
+
+.besogo-container button:active {
+    border-color: #000 #5a5a5a #5a5a5a #000;
+}
+
+.besogo-container input {
+    color: #ddd;
+    background: #2c2c2c;
+    border: 1px solid #5a5a5a;
+}
+
+.besogo-container input[type='button'] {
+    color: #ddd;
+    background: #3a3a3a;
+    border-color: #5a5a5a #000 #000 #5a5a5a;
+}
+
+.besogo-container input[type='button']:hover {
+    background: #4b4b4b;
+}
+
+.besogo-container input[type='button']:active {
+    border-color: #000 #5a5a5a #5a5a5a #000;
+}
+
+.besogo-comment textarea {
+    color: #ddd;
+    background: #2c2c2c;
+    border: 1px solid #5a5a5a;
+}
+
+.besogo-gameInfo td, tr {
+    border: 1px solid #5a5a5a;
+}
+}
