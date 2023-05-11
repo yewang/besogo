@@ -51,7 +51,7 @@ besogo.makeToolPanel = function(container, editor) {
 
     svg = makeButtonSVG('clrMark', 'Clear mark'); // Clear markup button
     element = besogo.svgEl('g');
-    element.appendChild(besogo.svgTriangle(0, 0, besogo.GREY));
+    element.appendChild(besogo.svgTriangle(0, 0, 'gray'));
     element.appendChild(besogo.svgCross(0, 0, besogo.RED));
     svg.appendChild(element);
 

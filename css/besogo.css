@@ -1,7 +1,7 @@
 .besogo-container {
     outline: none;
     display: flex;
-    background: #d0fefe;
+    background: #eee;
 }
 
 .besogo-container * {
@@ -12,17 +12,51 @@
     height: 30px;
     width: 30px;
     padding: 0px;
-    background: #d8dcd6;
-    border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
+    background: #e1e1e1;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 6px;
+    border-color: #fff #adadad #adadad #fff;
+    cursor: pointer;
+}
+
+.besogo-container button:hover {
+    background: #e7e7e7;
+}
+
+.besogo-container button:active {
+    border-color: #adadad #fff #fff #adadad;
 }
 
 .besogo-container input {
     font-size: 12pt;
+    border: 1px solid #adadad;
+}
+
+.besogo-container input:focus {
+    outline: none;
+    border: 1px solid #dbb40c;
 }
 
 .besogo-container input[type='button'] {
-    background: #d8dcd6;
-    border-color: #ffffff #e6e6e6 #e6e6e6 #ffffff;
+    height: 25px;
+    min-width: 55px;
+    padding: 0px 5px;
+    font-family: Georgia, serif;
+    background: #e1e1e1;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 6px;
+    border-color: #fff #adadad #adadad #fff;
+    cursor: pointer;
+}
+
+.besogo-container input[type='button']:hover {
+    background: #e7e7e7;
+}
+
+.besogo-container input[type='button']:active {
+    border-color: #adadad #fff #fff #adadad;
 }
 
 .besogo-container input[type='text'] {
@@ -111,6 +145,12 @@
 .besogo-comment textarea {
     height: 100%;
     width: 100%;
+    border: 1px solid #adadad;
+}
+
+.besogo-comment textarea:focus {
+    outline: none;
+    border: 1px solid #dbb40c;
 }
 
 .besogo-gameInfo {
