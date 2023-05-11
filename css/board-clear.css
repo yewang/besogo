@@ -1,0 +1,32 @@
+.besogo-svg-board {
+    fill: #dcb771;
+}
+
+.besogo-svg-lines {
+    stroke: black;
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.besogo-svg-hoshi {
+    stroke: black;
+    stroke-width: 9;
+}
+
+.besogo-svg-blackStone {
+    fill: black;
+    stroke: black;
+    stroke-width: 2;
+}
+
+.besogo-svg-whiteStone {
+    fill: white;
+    stroke: white;
+    stroke-width: 2;
+}
+
+.besogo-svg-greyStone {
+    fill: gray;
+    stroke: gray;
+    stroke-width: 2;
+}
