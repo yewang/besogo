@@ -35,6 +35,7 @@
 
 .besogo-container input:focus {
     outline: none;
+    border: 1px solid #dbb40c;
 }
 
 .besogo-container input[type='button'] {
@@ -149,6 +150,7 @@
 
 .besogo-comment textarea:focus {
     outline: none;
+    border: 1px solid #dbb40c;
 }
 
 .besogo-gameInfo {
