@@ -183,18 +183,18 @@ besogo.create = function(container, options) {
                 container.style['flex-direction'] = 'row';
                 if (panelsDiv) {
                     panelsWidth = (width - height >= minPanelsWidth) ? (width - height) : minPanelsWidth;
+                    panelsDiv.style.height = height + 'px';
+                    panelsDiv.style.width = panelsWidth + 'px';
                 }
-                panelsDiv.style.height = height + 'px';
-                panelsDiv.style.width = panelsWidth + 'px';
                 boardDiv.style.height = height + 'px';
                 boardDiv.style.width = (width - panelsWidth) + 'px';
             } else { // Portrait mode
                 container.style['flex-direction'] = 'column';
                 if (panelsDiv) {
                     panelsHeight = (height - width >= minPanelsHeight) ? (height - width) : minPanelsHeight;
+                    panelsDiv.style.height = panelsHeight + 'px';
+                    panelsDiv.style.width = width + 'px';
                 }
-                panelsDiv.style.height = panelsHeight + 'px';
-                panelsDiv.style.width = width + 'px';
                 boardDiv.style.height = (height - panelsHeight) + 'px';
                 boardDiv.style.width = width + 'px';
             }
