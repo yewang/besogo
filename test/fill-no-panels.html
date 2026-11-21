@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BesoGo regression test: fill resize without panels</title>
+<style>
+body { font-family: sans-serif; margin: 2em; }
+#summary { font-weight: bold; }
+.pass { color: #1b5e20; }
+.fail { color: #b00020; }
+#fixtures { position: absolute; left: -10000px; top: 0; }
+</style>
+
+<script src="../js/besogo.js"></script>
+<script src="../js/editor.js"></script>
+<script src="../js/gameRoot.js"></script>
+<script src="../js/svgUtil.js"></script>
+<script src="../js/parseSgf.js"></script>
+<script src="../js/loadSgf.js"></script>
+<script src="../js/saveSgf.js"></script>
+<script src="../js/boardDisplay.js"></script>
+<script src="../js/coord.js"></script>
+<script src="../js/toolPanel.js"></script>
+<script src="../js/filePanel.js"></script>
+<script src="../js/controlPanel.js"></script>
+<script src="../js/namesPanel.js"></script>
+<script src="../js/commentPanel.js"></script>
+<script src="../js/treePanel.js"></script>
+</head>
+<body>
+<h1>BesoGo regression test: fill resize without panels</h1>
+<p>Checks that <code>besogo.create()</code> with <code>resize: "fill"</code> and
+no panels still sizes the board instead of throwing when there is no panels div.
+Open this page in a browser to run the test.</p>
+<p id="summary">Running...</p>
+<ol id="results"></ol>
+<div id="fixtures"></div>
+
+<script type="text/javascript">
+(function() {
+    'use strict';
+    var results = [];
+
+    window.testResult = { total: 0, passed: 0, failed: 0, checks: results };
+
+    function check(name, actual, expected) {
+        var passed = actual === expected,
+            item = document.createElement('li');
+
+        item.className = passed ? 'pass' : 'fail';
+        item.textContent = (passed ? 'PASS ' : 'FAIL ') + name;
+        if (!passed) {
+            item.textContent += ' (expected ' + JSON.stringify(expected) +
+                ', got ' + JSON.stringify(actual) + ')';
+        }
+        document.getElementById('results').appendChild(item);
+        results.push({ name: name, passed: passed, actual: actual, expected: expected });
+    }
+
+    function report() {
+        var failed = 0,
+            i;
+
+        for (i = 0; i < results.length; i++) {
+            if (!results[i].passed) {
+                failed++;
+            }
+        }
+        window.testResult.total = results.length;
+        window.testResult.failed = failed;
+        window.testResult.passed = results.length - failed;
+        document.getElementById('summary').textContent = failed ?
+            'FAIL: ' + failed + ' of ' + results.length + ' checks failed' :
+            'PASS: all ' + results.length + ' checks passed';
+        document.getElementById('summary').className = failed ? 'fail' : 'pass';
+        document.title = (failed ? 'FAIL' : 'PASS') +
+            ' - BesoGo fill resize test';
+    }
+
+    function makeTarget(width, height) {
+        var fixture = document.createElement('div'),
+            target = document.createElement('div');
+
+        fixture.style.width = width + 'px';
+        fixture.style.height = height + 'px';
+        fixture.style.position = 'relative';
+        fixture.appendChild(target);
+        document.getElementById('fixtures').appendChild(fixture);
+        return target;
+    }
+
+    function checkFill(name, width, height) {
+        var target = makeTarget(width, height),
+            error = null,
+            board;
+
+        try {
+            besogo.create(target, { resize: 'fill', panels: '' });
+        } catch (e) {
+            error = e;
+        }
+
+        check(name + ': create() does not throw', error && String(error), null);
+        if (error) {
+            return;
+        }
+
+        board = target.querySelector('.besogo-board');
+        check(name + ': board div is created', !!board, true);
+        check(name + ': no panels div is created', target.querySelector('.besogo-panels'), null);
+        check(name + ': board width fills parent', board && board.style.width, width + 'px');
+        check(name + ': board height fills parent', board && board.style.height, height + 'px');
+    }
+
+    checkFill('landscape 800x600', 800, 600);
+    checkFill('portrait 420x800', 420, 800);
+    checkFill('square 500x500', 500, 500);
+
+    report();
+})();
+</script>
+</body>
+</html>
