@@ -61,7 +61,9 @@ besogo.create = function(container, options) {
         try {
             new URL(options.sgf);
             validURL = true;
-        } catch (e) {}
+        } catch (e) {
+            validURL = !/^\s*\(/.test(options.sgf);
+        }
 
         try {
             if (validURL) {
