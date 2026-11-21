@@ -166,7 +166,7 @@ besogo.makeEditor = function(sizeX, sizeY) {
     function setComment(text) {
         text = text.trim(); // Trim whitespace and standardize line breaks
         text = text.replace(/\r\n/g,'\n').replace(/\n\r/g,'\n').replace(/\r/g,'\n');
-        text.replace(/\f\t\v\u0085\u00a0/g,' '); // Convert other whitespace to space
+        text = text.replace(/[\f\t\v\u0085\u00a0]/g,' '); // Convert other whitespace to space
         current.comment = text;
         notifyListeners({ comment: text });
     }

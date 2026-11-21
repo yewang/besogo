@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BesoGo regression test: comment whitespace</title>
+<style>
+body { font-family: sans-serif; margin: 2em; }
+#summary { font-weight: bold; }
+.pass { color: #1b5e20; }
+.fail { color: #b00020; }
+</style>
+
+<script src="../js/besogo.js"></script>
+<script src="../js/editor.js"></script>
+<script src="../js/gameRoot.js"></script>
+<script src="../js/saveSgf.js"></script>
+</head>
+<body>
+<h1>BesoGo regression test: comment whitespace</h1>
+<p>Checks that <code>editor.setComment()</code> converts tabs, form feeds, vertical
+tabs, NEL, and non-breaking spaces to plain spaces, and that the normalized text
+is stored and written to SGF. Open this page in a browser to run the test.</p>
+<p id="summary">Running...</p>
+<ol id="results"></ol>
+
+<script type="text/javascript">
+(function() {
+    'use strict';
+    var results = [],
+        editor,
+        input,
+        expected,
+        sgf;
+
+    window.testResult = { total: 0, passed: 0, failed: 0, checks: results };
+
+    function check(name, actual, expected) {
+        var passed = actual === expected,
+            item = document.createElement('li');
+
+        item.className = passed ? 'pass' : 'fail';
+        item.textContent = (passed ? 'PASS ' : 'FAIL ') + name;
+        if (!passed) {
+            item.textContent += ' (expected ' + JSON.stringify(expected) +
+                ', got ' + JSON.stringify(actual) + ')';
+        }
+        document.getElementById('results').appendChild(item);
+        results.push({ name: name, passed: passed, actual: actual, expected: expected });
+    }
+
+    function report() {
+        var failed = 0,
+            i;
+
+        for (i = 0; i < results.length; i++) {
+            if (!results[i].passed) {
+                failed++;
+            }
+        }
+        window.testResult.total = results.length;
+        window.testResult.failed = failed;
+        window.testResult.passed = results.length - failed;
+        document.getElementById('summary').textContent = failed ?
+            'FAIL: ' + failed + ' of ' + results.length + ' checks failed' :
+            'PASS: all ' + results.length + ' checks passed';
+        document.getElementById('summary').className = failed ? 'fail' : 'pass';
+        document.title = (failed ? 'FAIL' : 'PASS') +
+            ' - BesoGo comment whitespace test';
+    }
+
+    editor = besogo.makeEditor(19, 19);
+
+    editor.setComment('a\tb');
+    check('tab becomes a space', editor.getCurrent().comment, 'a b');
+
+    editor.setComment('a\fb');
+    check('form feed becomes a space', editor.getCurrent().comment, 'a b');
+
+    editor.setComment('a\vb');
+    check('vertical tab becomes a space', editor.getCurrent().comment, 'a b');
+
+    editor.setComment('a\u0085b');
+    check('NEL becomes a space', editor.getCurrent().comment, 'a b');
+
+    editor.setComment('a\u00a0b');
+    check('non-breaking space becomes a space', editor.getCurrent().comment, 'a b');
+
+    editor.setComment('a\r\nb\n\rc\rd');
+    check('line breaks are standardized', editor.getCurrent().comment,
+        'a\nb\nc\nd');
+
+    input = ' \ta\tb\fc\vd\u0085e\u00a0f\r\ng\n\rh\ri\t ';
+    expected = 'a b c d e f\ng\nh\ni';
+    editor.setComment(input);
+    check('mixed whitespace is normalized', editor.getCurrent().comment, expected);
+
+    sgf = besogo.composeSgf(editor);
+    check('saved SGF contains the normalized comment',
+        sgf.indexOf('C[' + expected + ']') !== -1, true);
+
+    report();
+})();
+</script>
+</body>
+</html>
